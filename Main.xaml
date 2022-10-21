@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1161,908</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>981,908</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="51">
@@ -308,7 +308,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <Transition.To>
-            <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="Download the generated Department Approvers report" DisplayName="Report Download" sap:VirtualizedContainerService.HintSize="231,112" sap2010:WorkflowViewState.IdRef="State_3">
+            <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="Download the generated Department Approvers report" DisplayName="Report Download" sap:VirtualizedContainerService.HintSize="1086,5299" sap2010:WorkflowViewState.IdRef="State_3">
               <State.Entry>
                 <Sequence DisplayName="Report Download Sequence" sap:VirtualizedContainerService.HintSize="1040,4881" sap2010:WorkflowViewState.IdRef="Sequence_108">
                   <Sequence.Variables>
@@ -394,11 +394,7 @@
                                 <ui:InterruptibleWhile.Body>
                                   <Sequence DisplayName="Body of Report Generation while loop" sap:VirtualizedContainerService.HintSize="848,790" sap2010:WorkflowViewState.IdRef="Sequence_106">
                                     <Sequence.Variables>
-                                      <Variable x:TypeArguments="x:String" Name="reportStatusSelector">
-                                        <Variable.Default>
-                                          <Literal x:TypeArguments="x:String">&lt;webctrl aria-role='presentation' parentname='RecentForm' tag='TABLE' /&gt;&lt;webctrl type='' isleaf='1' class='' tag='TD' aaname='*Completed*' innertext='*Completed*' parentclass='FormCellTextRow' parentid='CFValueCSVImportExport_body' rowName='Export' check:text='*Completed*' /&gt;</Literal>
-                                        </Variable.Default>
-                                      </Variable>
+                                      <Variable x:TypeArguments="x:String" Default="&lt;webctrl aria-role='presentation' parentname='RecentForm' tag='TABLE' /&gt;&lt;webctrl type='' isleaf='1' class='' tag='TD' aaname='*Completed*' innertext='*Completed*' parentclass='FormCellTextRow' parentid='CFValueCSVImportExport_body' rowName='Export' check:text='*Completed*' /&gt;" Name="reportStatusSelector" />
                                     </Sequence.Variables>
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -436,7 +432,7 @@
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                          <ui:LogMessage DisplayName="Log Message - report incomplete" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_131" Level="Info" Message="[&quot;Report is still processing&quot;]" />
+                                          <ui:LogMessage DisplayName="Log Message - report incomplete" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_131" Level="Info" Message="[&quot;Still processing - on count &quot; + currentRefreshCount.ToString + &quot; out of &quot; + maxRefreshCount.ToString]" />
                                           <uix:NClick ClickType="Single" DisplayName="Refresh the page" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_49" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50d8ec10-3cb7-492d-9e8b-53bed36ff72e" Version="V1">
                                             <uix:NClick.Target>
                                               <uix:TargetAnchorable BrowserURL="https://solutions.sciquest.com/apps/Router/CFValueCSVImportExport" DesignTimeRectangle="1782, 252, 86, 17" ElementType="Text" FriendlyName="'Refresh this Page'" FullSelectorArgument="&lt;webctrl tableRow='6' tag='TABLE' /&gt;&lt;webctrl aria-role='button' tableRow='1' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aria-role='button' type='' tag='A' class='btn btn-link btn-mini' aaname='Refresh this Page' check:innerText='Refresh this Page' /&gt;" Guid="a271d94c-fcd5-4553-b8d4-dfc7174416ad" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFoAAAAVCAYAAADGpvm7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAOESURBVFhH7ZaxayJBFMbvv0plZZXuqlSp7CxEEEIKGwkETLNNAmlsLEIgENJYSCAQLGwkENBG1F0V4+ZUojFnYhLhu/dmZnXduMZckr0r9oOBnZm3s/N+896b/QFfnsgH7ZF80B7JB+2RfNAe6ZOg73G+V0EgXEPGVEP/XK8Yv0zU8/+jGejrBtbClWkLbtdx3nxVky4qNRDQTAxV9+81RCbxwcPi/R52VMcm2lNQu11tTw6fAxEd6cKDmvxazYNO3KAnOq8YFhrYiLfQFv3F6mVriGY/j3k10A4bN9Af0ZzPpJ6JZKyG06bqf6FcQLM60MINFPlx1MVxgkuEjPRLk1LTHg3iPQZhQEtVERD9J5SPdKzzfKSGZO5erMrl5lIjGxVBx6UnGuN3q4hr0p7Hz/kbU/FerMhTsMV+DSS35Xgo3cGYTe0HYJrYUfPriSbKIzk81RufgeJhBdo1PYz6yOzXEORv0v61wm9pgAfkD+U4s9ghLsLe1V+pFSL6GVf0wXTpkcYnGJLd5p4sF/MRLWFpBbYDxoU6wumusMOgg4NtA5cDssoZ2EjfCRvoLWxR6ZGHVKXNsfUE7bMaAilntC6I6EQL5QEdyOgXtBgdDm9+CvoRl3tVpMtc/l5hnOjYyTnKghP04JbWkRE9Nu9wVVa+DejAVNCxX8HdG7RfeJy/K0G7+WvJtUavxevIi6iyR5NqMYoOmnkLegaCI2PunTA7TRNmG1uRCjZ26zjN9zHkDS+C+KYsLLOxzdnGexc6gpEqtvZbyOtWRNrk8DngzDwKMBGhoknQxVQFyfyzNCFZGeDqr9LiiKYTjMdoYQGBQddxxY8OvQdaK7jc/i9j9PQOzlOUgiI7vge00OgBRsnEQbyCeM4B2+6zQ72sjk3KKhkIszLKoO1+2UG7+ktyKR0TSrUaQid9eqYU1CqIng1kDRxQSpVkCi4DzSWCU8wQv1qPKBe6Ym3jTEc8q3KKU1Jkx3eA7uOUanhG/DlRKbww8NMqWZaWgObyFTpi/6lclluIvlM63Py15H4ZvtApUr0Sm7ddhrMLbDnoucuBWvSoKw9q4VqrgJ7QenyJOoGyFoEmKKUmolSm+PurXoZTqX3yu6H9OmW4gbyI7icU0+9chtSm/irNQPtaUVSKrHovInr+0nOTD/qjcvz2OX/j3OSD9kg+aI/kg/ZIPmiP5IP2RMAfd0QlteUAAoIAAAAASUVORK5CYII=" InformativeScreenshot="efbd91b9b027f419b5da300c84f47d4e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Custom Field - CSV Values Import/Export' /&gt;" SearchSteps="FuzzySelector, Image" Visibility="Interactive" />
@@ -476,11 +472,7 @@
                                 <If.Then>
                                   <Sequence DisplayName="Report Complete Sequence" sap:VirtualizedContainerService.HintSize="476,1833" sap2010:WorkflowViewState.IdRef="Sequence_141">
                                     <Sequence.Variables>
-                                      <Variable x:TypeArguments="x:String" Name="fileNameSelector">
-                                        <Variable.Default>
-                                          <Literal x:TypeArguments="x:String">&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='A' class='' aaname='Values_*.csv*' /&gt;</Literal>
-                                        </Variable.Default>
-                                      </Variable>
+                                      <Variable x:TypeArguments="x:String" Default="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='A' class='' aaname='Values_*.csv*' /&gt;" Name="fileNameSelector" />
                                     </Sequence.Variables>
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -770,9 +762,9 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <Transition.To>
-                            <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="610,4602" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
+                            <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="144,119" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
                               <State.Entry>
-                                <TryCatch DisplayName="Try to send notification email &amp; close all applications" sap:VirtualizedContainerService.HintSize="564,4458" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                                <TryCatch DisplayName="Try to send notification email &amp; close all applications" sap:VirtualizedContainerService.HintSize="564,2903" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -780,7 +772,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <TryCatch.Try>
-                                    <Sequence DisplayName="Sequence - End Process" sap:VirtualizedContainerService.HintSize="526,4231" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                                    <Sequence DisplayName="Sequence - End Process" sap:VirtualizedContainerService.HintSize="526,2676" sap2010:WorkflowViewState.IdRef="Sequence_33">
                                       <Sequence.Variables>
                                         <Variable x:TypeArguments="x:Boolean" Default="False" Name="errorFlag" />
                                         <Variable x:TypeArguments="s:String[][]" Default="[{}]" Name="errorMessages" />
@@ -1031,7 +1023,7 @@ Environment.NewLine]</InArgument>
                                           </Sequence>
                                         </If.Else>
                                       </If>
-                                      <If sap2010:Annotation.AnnotationText="Check if the send notification asset value is true. If true then an email will be sent indicating that the process has started, else no email is sent." Condition="[sendNotificationEmail]" DisplayName="Check if Send notification is true" sap:VirtualizedContainerService.HintSize="484,864" sap2010:WorkflowViewState.IdRef="If_19">
+                                      <If sap2010:Annotation.AnnotationText="Check if the send notification asset value is true. If true then an email will be sent indicating that the process has started, else no email is sent." Condition="[sendNotificationEmail]" DisplayName="Check if Send notification is true" sap:VirtualizedContainerService.HintSize="484,153" sap2010:WorkflowViewState.IdRef="If_19">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -1065,7 +1057,7 @@ Environment.NewLine]</InArgument>
                                           </Sequence>
                                         </If.Then>
                                       </If>
-                                      <If sap2010:Annotation.AnnotationText="If the send notification email config is set to false, no start or end emails will be sent. However in the case of an error an email will be sent regardless." Condition="[errorFlag And sendNotificationEmail = False]" DisplayName="Check if there are errors &amp; Send Notification Email config is false" sap:VirtualizedContainerService.HintSize="484,982" sap2010:WorkflowViewState.IdRef="If_23">
+                                      <If sap2010:Annotation.AnnotationText="If the send notification email config is set to false, no start or end emails will be sent. However in the case of an error an email will be sent regardless." Condition="[errorFlag And sendNotificationEmail = False]" DisplayName="Check if there are errors &amp; Send Notification Email config is false" sap:VirtualizedContainerService.HintSize="484,153" sap2010:WorkflowViewState.IdRef="If_23">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -1108,10 +1100,10 @@ Environment.NewLine]</InArgument>
                                           </Sequence>
                                         </If.Else>
                                       </If>
-                                      <If sap2010:Annotation.AnnotationText="Sends an email to a Slack channel when there are errors. The email address used is stored as as Orchestrator Asset." Condition="[errorFlag And sendSlackNotificationEmail]" DisplayName="Send Email to Slack Channel if there are errors" sap:VirtualizedContainerService.HintSize="484,982" sap2010:WorkflowViewState.IdRef="If_24">
+                                      <If sap2010:Annotation.AnnotationText="Sends an email to a Slack channel when there are errors. The email address used is stored as as Orchestrator Asset." Condition="[errorFlag And sendSlackNotificationEmail]" DisplayName="Send Email to Slack Channel if there are errors" sap:VirtualizedContainerService.HintSize="484,138" sap2010:WorkflowViewState.IdRef="If_24">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                           </scg:Dictionary>
