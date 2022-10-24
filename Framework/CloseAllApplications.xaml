@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>390,498</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>860,827</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CloseAllApplications_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -48,6 +48,7 @@
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Collections.Specialized</x:String>
       <x:String>UiPath.Web.Activities</x:String>
+      <x:String>System.Management.Automation</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -84,6 +85,8 @@
       <AssemblyReference>UpdateChromePreferenceLibrary</AssemblyReference>
       <AssemblyReference>Newtonsoft.Json</AssemblyReference>
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Management.Automation</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Do the necessary procedures for ending the process (e.g., logout) and close the used applications." DisplayName="Close All Applications" sap:VirtualizedContainerService.HintSize="376,495" sap2010:WorkflowViewState.IdRef="Sequence_2">
@@ -94,10 +97,10 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log message (close applications)" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Closing applications...&quot;]" />
-    <b:BuyWaysLogout sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="BuyWaysLogout_1" in_buywaysLogoutUrl="[in_buywaysLogoutURL]" />
+    <b:BuyWaysLogout DisplayName="BuyWaysLogout - Log out of Buyways" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="BuyWaysLogout_1" in_buywaysLogoutUrl="[in_buywaysLogoutURL]" />
     <ui:CloseApplication DisplayName="Close Application 'Chrome' - close processes" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="CloseApplication_1">
       <ui:CloseApplication.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="970fb111-d3ea-4c4f-88df-60aedd97a781" InformativeScreenshot="5b7202c557ae1f28040f6c2f2062c04a" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='*- Google Chrome' /&gt;&lt;ctrl name='*Google Chrome' role='pane' /&gt;&lt;ctrl name='Google Chrome' role='pane' /&gt;&lt;ctrl idx='17' role='pane' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="970fb111-d3ea-4c4f-88df-60aedd97a781" InformativeScreenshot="5b7202c557ae1f28040f6c2f2062c04a" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' /&gt;&lt;ctrl name='*Google Chrome' role='pane' /&gt;&lt;ctrl name='Google Chrome' role='pane' /&gt;&lt;ctrl role='pane' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -107,6 +110,6 @@
         </ui:Target>
       </ui:CloseApplication.Target>
     </ui:CloseApplication>
-    <u:UpdateChromePreference sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="UpdateChromePreference_1" />
+    <u:UpdateChromePreference DisplayName="UpdateChromePreference - Updagte Chrome's Preferences" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="UpdateChromePreference_1" />
   </Sequence>
 </Activity>
