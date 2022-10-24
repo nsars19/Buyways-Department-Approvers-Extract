@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>992,4495</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>992,4535</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DepartmentApproversReportDownload_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -50,7 +50,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="27">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="54">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -78,9 +78,16 @@
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DepartmentApproversReportDownload" sap:VirtualizedContainerService.HintSize="1002,4430" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DepartmentApproversReportDownload" sap:VirtualizedContainerService.HintSize="1002,4470" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="reportComplete" />
       <Variable x:TypeArguments="x:Int32" Default="1" Name="currentRefreshCount" />
@@ -108,13 +115,13 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Browser Chrome: Contracts Home - BuyWays Landing" sap:VirtualizedContainerService.HintSize="960,4198" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="50d8ec10-3cb7-492d-9e8b-53bed36ff72e" Version="V1" WindowResize="Maximize">
+    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Browser Chrome: Contracts Home - BuyWays Landing" sap:VirtualizedContainerService.HintSize="960,4238" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="50d8ec10-3cb7-492d-9e8b-53bed36ff72e" Version="V1" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="File Download Wait Sequence" sap:VirtualizedContainerService.HintSize="926,3982" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <Sequence DisplayName="File Download Wait Sequence" sap:VirtualizedContainerService.HintSize="926,4022" sap2010:WorkflowViewState.IdRef="Sequence_8">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -129,8 +136,8 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </uix:NGoToUrl>
-            <ui:LogMessage DisplayName="Log Message - loop start" sap:VirtualizedContainerService.HintSize="884,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Begining loop to check for completed report&quot;]" />
-            <ui:InterruptibleWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Refresh the page every {{refreshInterval}} seconds, and then check the status of the report generation to determine whether to download the file, or refresh the page again" Condition="[reportComplete &lt;&gt; True and currentRefreshCount &lt;= in_maxRefreshCount]" DisplayName="While Report Status is not &quot;Completed&quot;" sap:VirtualizedContainerService.HintSize="884,997" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+            <ui:LogMessage DisplayName="Log Message - loop start" sap:VirtualizedContainerService.HintSize="884,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Beginning loop to check for completed report&quot;]" />
+            <ui:InterruptibleWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Refresh the page every {{refreshInterval}} seconds, and then check the status of the report generation to determine whether to download the file, or refresh the page again" Condition="[reportComplete &lt;&gt; True and currentRefreshCount &lt;= in_maxRefreshCount]" DisplayName="While Report Status is not &quot;Completed&quot;" sap:VirtualizedContainerService.HintSize="884,1037" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
               <ui:InterruptibleWhile.Body>
                 <Sequence DisplayName="Body of Report Generation while loop" sap:VirtualizedContainerService.HintSize="848,790" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
