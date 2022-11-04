@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>981,1984</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1084,1821</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DepartmentApproversReportGeneration_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -81,34 +81,26 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DepartmentApproversReportGeneration" sap:VirtualizedContainerService.HintSize="476,1919" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DepartmentApproversReportGeneration" sap:VirtualizedContainerService.HintSize="476,1756" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard WebDriverMode="{x:Null}" sap2010:Annotation.AnnotationText="Use BuyWays in a Chrome Browser" AttachMode="ByInstance" DisplayName="Use Browser Chrome: Contracts Home" sap:VirtualizedContainerService.HintSize="434,1827" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="7b5679ea-60e8-4228-b4d4-4134d640becf" Version="V1" WindowResize="Maximize">
+    <uix:NApplicationCard WebDriverMode="{x:Null}" sap2010:Annotation.AnnotationText="Use BuyWays in a Chrome Browser" AttachMode="ByInstance" DisplayName="Use Browser Chrome: Import/Export URL" sap:VirtualizedContainerService.HintSize="434,1664" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="7b5679ea-60e8-4228-b4d4-4134d640becf" Version="V1" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Start Report Generation Process" sap:VirtualizedContainerService.HintSize="376,1580" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Start Report Generation Process" sap:VirtualizedContainerService.HintSize="376,1417" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NGoToUrl sap2010:Annotation.AnnotationText="Go to the URL for generating the Search Contract Request report" DelayAfter="5" DelayBefore="5" DisplayName="Go To URL for Search Contract Requests" sap:VirtualizedContainerService.HintSize="334,123" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[in_customFieldsURL]" Version="V1">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </uix:NGoToUrl>
             <ui:LogMessage DisplayName="Log Message - Begin report generation" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Beginning report generation ui steps&quot;]" />
             <ui:LogMessage DisplayName="Log Message - Unique Descriptor" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;adding unique descriptor to match report: &quot; + in_departmentApproversFilename]" />
             <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Add unique descriptor to 'Description' input" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,216" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="7b5679ea-60e8-4228-b4d4-4134d640becf" Text="[in_departmentApproversFilename]" Version="V1">
@@ -145,7 +137,7 @@
         </ActivityAction>
       </uix:NApplicationCard.Body>
       <uix:NApplicationCard.TargetApp>
-        <uix:TargetApp Area="-8, -8, 1936, 1056" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFUSURBVFhH7ZcxK4VxFIdvN90MBqNiMMggg0F3kOF+CpNJMshgMMigzD6BjJIkg8Egg+QjyGDSTTJIkmQSz6nfv04nA6/OLbpPPdPvdZ563xS1Lv+S9tDgMN4G9zXnQ2wOP4IbmvMhthPiZktzLoRMe+U+/oa9eiQXQiMuXDzTnA+x+RA31zXnQ2w3xM1pzbkQMu9c2HzFhh7JhdCoCxdPNedDbCHEzTXN+RDbC3FzSnMuhMx7FzZfsGPff8yFiyea8yG2GOLmquZ8iB2EuNnUnAuhOj64sPmMPXokF0LjLlw81pwPsaUQN1c050PsMMTNSc25ELLv/+jC5hN27Ps3Xbh4pDkPIg1s4ZWi3hk9Vg0O2Gu9QXuVX2m/Yu8Yw+YF1nWqGhyYcAd/4iUO6Ex1OLLsjn5H+6NjE/t04ndwaBvjPxbFNl7jOW7hLPbrR7v8NWq1TysweH8jSIWQAAAAAElFTkSuQmCC" InformativeScreenshot="0d066bbc968b7499180cb368490b3e9b.png" Selector="&lt;html app='chrome.exe' title='Contracts Home'/&gt;" Url="https://solutions.sciquest.com/apps/Router/ContractRepositoryDashboard?tmstmp=1660242015028" />
+        <uix:TargetApp Area="-8, -8, 1936, 1056" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFUSURBVFhH7ZcxK4VxFIdvN90MBqNiMMggg0F3kOF+CpNJMshgMMigzD6BjJIkg8Egg+QjyGDSTTJIkmQSz6nfv04nA6/OLbpPPdPvdZ563xS1Lv+S9tDgMN4G9zXnQ2wOP4IbmvMhthPiZktzLoRMe+U+/oa9eiQXQiMuXDzTnA+x+RA31zXnQ2w3xM1pzbkQMu9c2HzFhh7JhdCoCxdPNedDbCHEzTXN+RDbC3FzSnMuhMx7FzZfsGPff8yFiyea8yG2GOLmquZ8iB2EuNnUnAuhOj64sPmMPXokF0LjLlw81pwPsaUQN1c050PsMMTNSc25ELLv/+jC5hN27Ps3Xbh4pDkPIg1s4ZWi3hk9Vg0O2Gu9QXuVX2m/Yu8Yw+YF1nWqGhyYcAd/4iUO6Ex1OLLsjn5H+6NjE/t04ndwaBvjPxbFNl7jOW7hLPbrR7v8NWq1TysweH8jSIWQAAAAAElFTkSuQmCC" InformativeScreenshot="0d066bbc968b7499180cb368490b3e9b.png" Selector="&lt;html app='chrome.exe' title='Contracts Home'/&gt;" Url="[in_customFieldsURL]" />
       </uix:NApplicationCard.TargetApp>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
