@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>896,908</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1084,908</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="102">
@@ -123,7 +123,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Start the Departent Approvers report generation process" DisplayName="Generate  Report" sap:VirtualizedContainerService.HintSize="251,112" sap2010:WorkflowViewState.IdRef="State_4">
+    <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Start the Departent Approvers report generation process" DisplayName="Generate  Report" sap:VirtualizedContainerService.HintSize="526,980" sap2010:WorkflowViewState.IdRef="State_4">
       <State.Entry>
         <Sequence DisplayName="Sequence - Generate Report" sap:VirtualizedContainerService.HintSize="480,562" sap2010:WorkflowViewState.IdRef="Sequence_78">
           <sap:WorkflowViewStateService.ViewState>
@@ -205,7 +205,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <State.Transitions>
-        <Transition sap2010:Annotation.AnnotationText="Search Contract Request report was generated successfully. Proceed to Report Download state processes." DisplayName="Report Created" sap:VirtualizedContainerService.HintSize="450,547" sap2010:WorkflowViewState.IdRef="Transition_9">
+        <Transition sap2010:Annotation.AnnotationText="Department Approvers report was generated successfully. Proceed to Report Download state processes." DisplayName="Report Created" sap:VirtualizedContainerService.HintSize="450,547" sap2010:WorkflowViewState.IdRef="Transition_9">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:PointCollection x:Key="ConnectorLocation">437.45,321.5 437.45,351.5 440,351.5 440,384</av:PointCollection>
@@ -351,7 +351,7 @@
                                   <ActivityAction.Argument>
                                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                   </ActivityAction.Argument>
-                                  <Sequence DisplayName="Sequence - Bucket Upload Exception" sap:VirtualizedContainerService.HintSize="376,380" sap2010:WorkflowViewState.IdRef="Sequence_115">
+                                  <Sequence DisplayName="Sequence - Bucket Upload Exception" sap:VirtualizedContainerService.HintSize="376,383" sap2010:WorkflowViewState.IdRef="Sequence_115">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -401,9 +401,9 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <Transition.To>
-                            <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="610,2869" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
+                            <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="144,119" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
                               <State.Entry>
-                                <TryCatch DisplayName="Try to send notification email &amp; close all applications" sap:VirtualizedContainerService.HintSize="564,2725" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                                <TryCatch DisplayName="Try to send notification email &amp; close all applications" sap:VirtualizedContainerService.HintSize="511,2725" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -411,7 +411,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <TryCatch.Try>
-                                    <Sequence DisplayName="Sequence - End Process" sap:VirtualizedContainerService.HintSize="526,2498" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                                    <Sequence DisplayName="Sequence - End Process" sap:VirtualizedContainerService.HintSize="473,2498" sap2010:WorkflowViewState.IdRef="Sequence_33">
                                       <Sequence.Variables>
                                         <Variable x:TypeArguments="x:Boolean" Default="False" Name="errorFlag" />
                                         <Variable x:TypeArguments="s:String[][]" Default="[{}]" Name="errorMessages" />
@@ -494,7 +494,7 @@
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                       </ui:MultipleAssign>
-                                      <ui:LogMessage sap2010:Annotation.AnnotationText="Fetch email credentials" DisplayName="Log Message - fetching email credentials" sap:VirtualizedContainerService.HintSize="484,82" sap2010:WorkflowViewState.IdRef="LogMessage_102" Level="Info" Message="[&quot;Fetching email credentials from Orchestrator&quot;]">
+                                      <ui:LogMessage sap2010:Annotation.AnnotationText="Fetch email credentials" DisplayName="Log Message - fetching email credentials" sap:VirtualizedContainerService.HintSize="431,82" sap2010:WorkflowViewState.IdRef="LogMessage_102" Level="Info" Message="[&quot;Fetching email credentials from Orchestrator&quot;]">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -503,7 +503,7 @@
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                       </ui:LogMessage>
-                                      <Assign sap2010:Annotation.AnnotationText="Create a 2-dimensional array containing each of the error message variables, as well as a string containing the context in which the error originated" DisplayName="Assign errorMessages variable" sap:VirtualizedContainerService.HintSize="484,132" sap2010:WorkflowViewState.IdRef="Assign_64">
+                                      <Assign sap2010:Annotation.AnnotationText="Create a 2-dimensional array containing each of the error message variables, as well as a string containing the context in which the error originated" DisplayName="Assign errorMessages variable" sap:VirtualizedContainerService.HintSize="431,132" sap2010:WorkflowViewState.IdRef="Assign_64">
                                         <Assign.To>
                                           <OutArgument x:TypeArguments="s:String[][]">[errorMessages]</OutArgument>
                                         </Assign.To>
@@ -516,7 +516,7 @@
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                       </Assign>
-                                      <ui:ForEach x:TypeArguments="s:String[]" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Aggregates error messages into the email message variable" DisplayName="Iterate over each error and add to the email message" sap:VirtualizedContainerService.HintSize="484,108" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[errorMessages]">
+                                      <ui:ForEach x:TypeArguments="s:String[]" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Aggregates error messages into the email message variable" DisplayName="Iterate over each error and add to the email message" sap:VirtualizedContainerService.HintSize="431,108" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[errorMessages]">
                                         <ui:ForEach.Body>
                                           <ActivityAction x:TypeArguments="s:String[]">
                                             <ActivityAction.Argument>
@@ -627,7 +627,7 @@ Environment.NewLine]</InArgument>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                       </ui:ForEach>
-                                      <If sap2010:Annotation.AnnotationText="Adds error prefix to subject line" Condition="[errorFlag = True]" DisplayName="Add 'With Errors' to email subject if there were errors" sap:VirtualizedContainerService.HintSize="484,93" sap2010:WorkflowViewState.IdRef="If_22">
+                                      <If sap2010:Annotation.AnnotationText="Adds error prefix to subject line" Condition="[errorFlag = True]" DisplayName="Add 'With Errors' to email subject if there were errors" sap:VirtualizedContainerService.HintSize="431,93" sap2010:WorkflowViewState.IdRef="If_22">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -662,7 +662,7 @@ Environment.NewLine]</InArgument>
                                           </Sequence>
                                         </If.Else>
                                       </If>
-                                      <If sap2010:Annotation.AnnotationText="Check if the send notification asset value is true, or if the error flag variable is true. If true then an email will be sent indicating that the process has ended, else no email is sent." Condition="[errorFlag Or sendNotificationEmail]" DisplayName="Check if Send notification is true or if error flag is true" sap:VirtualizedContainerService.HintSize="484,168" sap2010:WorkflowViewState.IdRef="If_19">
+                                      <If sap2010:Annotation.AnnotationText="Check if the send notification asset value is true, or if the error flag variable is true. If true then an email will be sent indicating that the process has ended, else no email is sent." Condition="[errorFlag Or sendNotificationEmail]" DisplayName="Check if Send notification is true or if error flag is true" sap:VirtualizedContainerService.HintSize="431,168" sap2010:WorkflowViewState.IdRef="If_19">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -696,7 +696,7 @@ Environment.NewLine]</InArgument>
                                           </Sequence>
                                         </If.Then>
                                       </If>
-                                      <If sap2010:Annotation.AnnotationText="Sends an email to a Slack channel when there are errors. The email address used is stored as as Orchestrator Asset." Condition="[errorFlag And sendSlackNotificationEmail]" DisplayName="Send Email to Slack Channel if there are errors" sap:VirtualizedContainerService.HintSize="484,138" sap2010:WorkflowViewState.IdRef="If_24">
+                                      <If sap2010:Annotation.AnnotationText="Sends an email to a Slack channel when there are errors. The email address used is stored as as Orchestrator Asset." Condition="[errorFlag And sendSlackNotificationEmail]" DisplayName="Send Email to Slack Channel if there are errors" sap:VirtualizedContainerService.HintSize="431,138" sap2010:WorkflowViewState.IdRef="If_24">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -739,7 +739,7 @@ Environment.NewLine]</InArgument>
                                           </Sequence>
                                         </If.Else>
                                       </If>
-                                      <ui:LogMessage sap2010:Annotation.AnnotationText="Buyways logout begin" DisplayName="Log Message - buyways logout begin" sap:VirtualizedContainerService.HintSize="484,82" sap2010:WorkflowViewState.IdRef="LogMessage_103" Level="Info" Message="[&quot;Initiating BuyWays logout process&quot;]">
+                                      <ui:LogMessage sap2010:Annotation.AnnotationText="Buyways logout begin" DisplayName="Log Message - buyways logout begin" sap:VirtualizedContainerService.HintSize="431,82" sap2010:WorkflowViewState.IdRef="LogMessage_103" Level="Info" Message="[&quot;Initiating BuyWays logout process&quot;]">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -748,12 +748,12 @@ Environment.NewLine]</InArgument>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                       </ui:LogMessage>
-                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CloseAllApplications workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="Framework\CloseAllApplications.xaml">
+                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CloseAllApplications workflow" sap:VirtualizedContainerService.HintSize="431,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="Framework\CloseAllApplications.xaml">
                                         <ui:InvokeWorkflowFile.Arguments>
                                           <InArgument x:TypeArguments="x:String" x:Key="in_buywaysLogoutURL">[buywaysLogoutUrl]</InArgument>
                                         </ui:InvokeWorkflowFile.Arguments>
                                       </ui:InvokeWorkflowFile>
-                                      <ui:LogMessage sap2010:Annotation.AnnotationText="buyways logout success" DisplayName="Log Message - buyways logout success" sap:VirtualizedContainerService.HintSize="484,82" sap2010:WorkflowViewState.IdRef="LogMessage_104" Level="Info" Message="[&quot;Successfully logged out of Buyways&quot;]">
+                                      <ui:LogMessage sap2010:Annotation.AnnotationText="buyways logout success" DisplayName="Log Message - buyways logout success" sap:VirtualizedContainerService.HintSize="431,82" sap2010:WorkflowViewState.IdRef="LogMessage_104" Level="Info" Message="[&quot;Successfully logged out of Buyways&quot;]">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -762,7 +762,7 @@ Environment.NewLine]</InArgument>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                       </ui:LogMessage>
-                                      <ui:LogMessage sap2010:Annotation.AnnotationText="Log email server errors" DisplayName="Log Message - email server" sap:VirtualizedContainerService.HintSize="484,82" sap2010:WorkflowViewState.IdRef="LogMessage_73" Level="Info" Message="[&quot;Email Exception: &quot; + emailServerErrorMessage]">
+                                      <ui:LogMessage sap2010:Annotation.AnnotationText="Log email server errors" DisplayName="Log Message - email server" sap:VirtualizedContainerService.HintSize="431,82" sap2010:WorkflowViewState.IdRef="LogMessage_73" Level="Info" Message="[&quot;Email Exception: &quot; + emailServerErrorMessage]">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -771,7 +771,7 @@ Environment.NewLine]</InArgument>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                       </ui:LogMessage>
-                                      <ui:LogMessage sap2010:Annotation.AnnotationText="Log initialization errors" DisplayName="Log Message - initialization errors" sap:VirtualizedContainerService.HintSize="484,82" sap2010:WorkflowViewState.IdRef="LogMessage_42" Level="Info" Message="[&quot;Initialization Error: &quot; + initializationErrorMessage]">
+                                      <ui:LogMessage sap2010:Annotation.AnnotationText="Log initialization errors" DisplayName="Log Message - initialization errors" sap:VirtualizedContainerService.HintSize="431,82" sap2010:WorkflowViewState.IdRef="LogMessage_42" Level="Info" Message="[&quot;Initialization Error: &quot; + initializationErrorMessage]">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -780,7 +780,7 @@ Environment.NewLine]</InArgument>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                       </ui:LogMessage>
-                                      <ui:LogMessage sap2010:Annotation.AnnotationText="Log navigation errors" DisplayName="Log Message - buyways navigation" sap:VirtualizedContainerService.HintSize="484,82" sap2010:WorkflowViewState.IdRef="LogMessage_43" Level="Info" Message="[&quot;BuyWays Navigation Error: &quot; + buywaysNavigationErrorMessage]">
+                                      <ui:LogMessage sap2010:Annotation.AnnotationText="Log navigation errors" DisplayName="Log Message - buyways navigation" sap:VirtualizedContainerService.HintSize="431,82" sap2010:WorkflowViewState.IdRef="LogMessage_43" Level="Info" Message="[&quot;BuyWays Navigation Error: &quot; + buywaysNavigationErrorMessage]">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -789,7 +789,7 @@ Environment.NewLine]</InArgument>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                       </ui:LogMessage>
-                                      <ui:LogMessage sap2010:Annotation.AnnotationText="Log report creation errors" DisplayName="Log Message - report creation" sap:VirtualizedContainerService.HintSize="484,82" sap2010:WorkflowViewState.IdRef="LogMessage_44" Level="Info" Message="[&quot;Zip File Creation Error: &quot; + zipCreationErrorMessage]">
+                                      <ui:LogMessage sap2010:Annotation.AnnotationText="Log report creation errors" DisplayName="Log Message - report creation" sap:VirtualizedContainerService.HintSize="431,82" sap2010:WorkflowViewState.IdRef="LogMessage_44" Level="Info" Message="[&quot;Zip File Creation Error: &quot; + zipCreationErrorMessage]">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -798,7 +798,7 @@ Environment.NewLine]</InArgument>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                       </ui:LogMessage>
-                                      <ui:LogMessage sap2010:Annotation.AnnotationText="Log storage upload errors" DisplayName="Log Message - storage upload" sap:VirtualizedContainerService.HintSize="484,82" sap2010:WorkflowViewState.IdRef="LogMessage_45" Level="Info" Message="[&quot;Storage Upload Error: &quot; + storageUploadErrorMessage]">
+                                      <ui:LogMessage sap2010:Annotation.AnnotationText="Log storage upload errors" DisplayName="Log Message - storage upload" sap:VirtualizedContainerService.HintSize="431,82" sap2010:WorkflowViewState.IdRef="LogMessage_45" Level="Info" Message="[&quot;Storage Upload Error: &quot; + storageUploadErrorMessage]">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -807,7 +807,7 @@ Environment.NewLine]</InArgument>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                       </ui:LogMessage>
-                                      <ui:LogMessage sap2010:Annotation.AnnotationText="Log report download errors" DisplayName="Log Message - report download" sap:VirtualizedContainerService.HintSize="484,82" sap2010:WorkflowViewState.IdRef="LogMessage_46" Level="Info" Message="[&quot;Zip File Download Error: &quot; + zipDownloadErrorMessage]">
+                                      <ui:LogMessage sap2010:Annotation.AnnotationText="Log report download errors" DisplayName="Log Message - report download" sap:VirtualizedContainerService.HintSize="431,82" sap2010:WorkflowViewState.IdRef="LogMessage_46" Level="Info" Message="[&quot;Zip File Download Error: &quot; + zipDownloadErrorMessage]">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -819,7 +819,7 @@ Environment.NewLine]</InArgument>
                                     </Sequence>
                                   </TryCatch.Try>
                                   <TryCatch.Catches>
-                                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+                                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="477,21" sap2010:WorkflowViewState.IdRef="Catch`1_5">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -902,7 +902,7 @@ Environment.NewLine]</InArgument>
             </State>
           </Transition.To>
           <Transition.Action>
-            <ui:LogMessage DisplayName="Log Message - report generated transition" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_79" Level="Info" Message="[&quot;Search Contract Request report was generated successfully. Proceeding to Report Download state processes.&quot;]" />
+            <ui:LogMessage DisplayName="Log Message - report generated transition" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_79" Level="Info" Message="[&quot;Departmet Approvers report was generated successfully. Proceeding to Report Download state processes.&quot;]" />
           </Transition.Action>
           <Transition.Condition>[ReportCreationException is Nothing]</Transition.Condition>
         </Transition>
@@ -933,7 +933,7 @@ Environment.NewLine]</InArgument>
     <x:Reference>__ReferenceID0</x:Reference>
     <State x:Name="__ReferenceID4" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="254,103" sap2010:WorkflowViewState.IdRef="State_2">
       <State.Entry>
-        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="564,2332" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="434,183" sap2010:WorkflowViewState.IdRef="TryCatch_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -941,7 +941,7 @@ Environment.NewLine]</InArgument>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <TryCatch.Try>
-            <Sequence DisplayName="Load configurations and open applications" sap:VirtualizedContainerService.HintSize="526,2105" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence DisplayName="Load configurations and open applications" sap:VirtualizedContainerService.HintSize="526,2028" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1065,7 +1065,7 @@ Environment.NewLine]</InArgument>
             </Sequence>
           </TryCatch.Try>
           <TryCatch.Catches>
-            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="530,21" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,21" sap2010:WorkflowViewState.IdRef="Catch`1_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1076,7 +1076,7 @@ Environment.NewLine]</InArgument>
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="s:Exception" Name="Exception" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Sequence - System Exception" sap:VirtualizedContainerService.HintSize="376,401" sap2010:WorkflowViewState.IdRef="Sequence_88">
+                <Sequence DisplayName="Sequence - System Exception" sap:VirtualizedContainerService.HintSize="376,398" sap2010:WorkflowViewState.IdRef="Sequence_88">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
