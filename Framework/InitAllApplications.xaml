@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Initialize_Applications" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:b="clr-namespace:BuyWays_Login;assembly=BuyWays Login" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:u="clr-namespace:UMassSendMailMessage;assembly=UMassSendMailMessage" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Initialize_Applications" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:b="clr-namespace:BuyWays_Login;assembly=BuyWays Login" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:u="clr-namespace:UMassSendMailMessage;assembly=UMassSendMailMessage" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="io_emailServerError" Type="InOutArgument(x:String)" />
@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1152,3396</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1013,3746</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="76">
@@ -53,10 +53,11 @@
       <x:String>Microsoft.Graph</x:String>
       <x:String>UiPath.MicrosoftOffice365.Enums</x:String>
       <x:String>UiPath.MicrosoftOffice365.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="76">
+    <sco:Collection x:TypeArguments="AssemblyReference">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -100,7 +101,8 @@
       <AssemblyReference>UiPath.MicrosoftOffice365</AssemblyReference>
       <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
       <AssemblyReference>System.Memory.Data</AssemblyReference>
-    </scg:List>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+    </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -108,7 +110,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="576,3331" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="640,3681" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="boolSendNotificationEmail" />
       <Variable x:TypeArguments="x:String" Name="emailToField" />
@@ -122,8 +124,8 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="534,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
-    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Assign variables using Config object values" DisplayName="Multiple Assign - Init Applications variables from Config" sap:VirtualizedContainerService.HintSize="534,255" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="578,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
+    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Assign variables using Config object values" DisplayName="Multiple Assign - Init Applications variables from Config" sap:VirtualizedContainerService.HintSize="578,265" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -176,7 +178,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <TryCatch DisplayName="Try Catch - Send Process Start Email" sap:VirtualizedContainerService.HintSize="534,1524" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch - Send Process Start Email" sap:VirtualizedContainerService.HintSize="578,1694" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -184,7 +186,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <If sap2010:Annotation.AnnotationText="Check if the send notification asset value is true. If true then an email will be sent indicating that the process has started, else no email is sent.&#xA;&#xA;If this process throws an exception a variable will hold the exception's message for use in the end-process email. The exception will then be rethrown to be caught in the Initialization context's try/catch, and the the end-process state will run." Condition="[boolSendNotificationEmail]" DisplayName="Check if Send Init notification is true" sap:VirtualizedContainerService.HintSize="496,800" sap2010:WorkflowViewState.IdRef="If_1">
+        <If sap2010:Annotation.AnnotationText="Check if the send notification asset value is true. If true then an email will be sent indicating that the process has started, else no email is sent.&#xA;&#xA;If this process throws an exception a variable will hold the exception's message for use in the end-process email. The exception will then be rethrown to be caught in the Initialization context's try/catch, and the the end-process state will run." Condition="[boolSendNotificationEmail]" DisplayName="Check if Send Init notification is true" sap:VirtualizedContainerService.HintSize="540,900" sap2010:WorkflowViewState.IdRef="If_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -193,23 +195,23 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <If.Then>
-            <Sequence DisplayName="Sequence - Send Process Start Email" sap:VirtualizedContainerService.HintSize="460,511" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <Sequence DisplayName="Sequence - Send Process Start Email" sap:VirtualizedContainerService.HintSize="504,601" sap2010:WorkflowViewState.IdRef="Sequence_10">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:RetryScope ContinueOnError="True" DisplayName="Retry Scope - Send start email" sap:VirtualizedContainerService.HintSize="418,419" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="2" RetryInterval="00:00:20">
+              <ui:RetryScope ContinueOnError="True" DisplayName="Retry Scope - Send start email" sap:VirtualizedContainerService.HintSize="442,479" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="2" RetryInterval="00:00:20">
                 <ui:RetryScope.ActivityBody>
                   <ActivityAction>
-                    <Sequence DisplayName="Action - Retry Scope send start email" sap:VirtualizedContainerService.HintSize="376,245" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                    <Sequence DisplayName="Action - Retry Scope send start email" sap:VirtualizedContainerService.HintSize="400,295" sap2010:WorkflowViewState.IdRef="Sequence_14">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="Log Message - Email Send Start" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Sending Process Start Email&quot;]" />
-                      <u:UMassSendMailMessage DisplayName="Start Process Email" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="UMassSendMailMessage_1" in_Body="[in_processName + &quot; started on &quot; + Environment.MachineName]" in_EmailTo="[emailToField]" in_Subject="[in_processName + &quot; started on &quot; + Environment.MachineName]" />
+                      <ui:LogMessage DisplayName="Log Message - Email Send Start" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Sending Process Start Email&quot;]" />
+                      <u:UMassSendMailMessage DisplayName="Start Process Email" sap:VirtualizedContainerService.HintSize="338,32" sap2010:WorkflowViewState.IdRef="UMassSendMailMessage_1" in_Body="[in_processName + &quot; started on &quot; + Environment.MachineName]" in_EmailTo="[emailToField]" in_Subject="[in_processName + &quot; started on &quot; + Environment.MachineName]" />
                     </Sequence>
                   </ActivityAction>
                 </ui:RetryScope.ActivityBody>
@@ -222,7 +224,7 @@
         </If>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="500,414" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="544,474" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -233,14 +235,14 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Email Send Catch" sap:VirtualizedContainerService.HintSize="376,345" sap2010:WorkflowViewState.IdRef="Sequence_11">
+            <Sequence DisplayName="Email Send Catch" sap:VirtualizedContainerService.HintSize="400,405" sap2010:WorkflowViewState.IdRef="Sequence_11">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Email Send Error Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[&quot;Error during init all apps email sending: &quot; + exception.Message]" />
-              <Assign DisplayName="Assign outut variable" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <ui:LogMessage DisplayName="Log Email Send Error Message" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[&quot;Error during init all apps email sending: &quot; + exception.Message]" />
+              <Assign DisplayName="Assign outut variable" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_1">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[io_emailServerError]</OutArgument>
                 </Assign.To>
@@ -248,13 +250,13 @@
                   <InArgument x:TypeArguments="x:String">[exception.Message]</InArgument>
                 </Assign.Value>
               </Assign>
-              <Rethrow DisplayName="Rethrow Email Send Exception" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+              <Rethrow DisplayName="Rethrow Email Send Exception" sap:VirtualizedContainerService.HintSize="338,32" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
             </Sequence>
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <TryCatch sap2010:Annotation.AnnotationText="Attempt to log in to Buyways.&#xA;&#xA;If the process fails it will attempt one more time. If it fails a second time, the try/catch block in the Initialization parent context will catch the exception, and end the process." DisplayName="Try Catch - BuyWays Login" sap:VirtualizedContainerService.HintSize="522,1087" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+    <TryCatch sap2010:Annotation.AnnotationText="Attempt to log in to Buyways.&#xA;&#xA;If the process fails it will attempt one more time. If it fails a second time, the try/catch block in the Initialization parent context will catch the exception, and end the process." DisplayName="Try Catch - BuyWays Login" sap:VirtualizedContainerService.HintSize="578,1207" sap2010:WorkflowViewState.IdRef="TryCatch_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -263,21 +265,21 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Initial Buyways Login" sap:VirtualizedContainerService.HintSize="376,245" sap2010:WorkflowViewState.IdRef="Sequence_12">
+        <Sequence DisplayName="Initial Buyways Login" sap:VirtualizedContainerService.HintSize="400,295" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message - BuyWays Login Start" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Logging into BuyWays&quot;]" />
-          <b:BuyWaysLogin DisplayName="BuyWaysLogin - 1st attempt" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="BuyWaysLogin_3" in_BuyWaysCredentialsAssetName="[buywaysCredentialsAssetName]" in_BuyWaysURLAssetName="[buywaysURLAssetName]" in_OrchestratorFolder="[orchestratorFolder]" />
+          <ui:LogMessage DisplayName="Log Message - BuyWays Login Start" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Logging into BuyWays&quot;]" />
+          <b:BuyWaysLogin DisplayName="BuyWaysLogin - 1st attempt" sap:VirtualizedContainerService.HintSize="338,32" sap2010:WorkflowViewState.IdRef="BuyWaysLogin_4" in_BuyWaysCredentialsAssetName="[buywaysCredentialsAssetName]" in_BuyWaysURLAssetName="[buywaysURLAssetName]" in_OrchestratorFolder="[orchestratorFolder]" />
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,445" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="406,505" sap2010:WorkflowViewState.IdRef="Catch`1_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -285,20 +287,20 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Second Buyways login attempt" sap:VirtualizedContainerService.HintSize="376,376" sap2010:WorkflowViewState.IdRef="Sequence_13">
+            <Sequence DisplayName="Second Buyways login attempt" sap:VirtualizedContainerService.HintSize="400,436" sap2010:WorkflowViewState.IdRef="Sequence_13">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message - Login Exception" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Error" Message="[exception.Message]" />
-              <ui:LogMessage DisplayName="Log Message - Second Buyways login attemp" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;First login attempt failed. Trying again.&quot;]" />
-              <b:BuyWaysLogin DisplayName="BuyWaysLogin - 2nd attempt" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="BuyWaysLogin_2" in_BuyWaysCredentialsAssetName="[buywaysCredentialsAssetName]" in_BuyWaysURLAssetName="[buywaysURLAssetName]" in_OrchestratorFolder="[orchestratorFolder]" />
+              <ui:LogMessage DisplayName="Log Message - Login Exception" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Error" Message="[exception.Message]" />
+              <ui:LogMessage DisplayName="Log Message - Second Buyways login attemp" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;First login attempt failed. Trying again.&quot;]" />
+              <b:BuyWaysLogin DisplayName="BuyWaysLogin - 2nd attempt" sap:VirtualizedContainerService.HintSize="338,32" sap2010:WorkflowViewState.IdRef="BuyWaysLogin_5" in_BuyWaysCredentialsAssetName="[buywaysCredentialsAssetName]" in_BuyWaysURLAssetName="[buywaysURLAssetName]" in_OrchestratorFolder="[orchestratorFolder]" />
             </Sequence>
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:LogMessage DisplayName="Log Message - BuyWays Login Complete" sap:VirtualizedContainerService.HintSize="522,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;BuyWays login successful&quot;]" />
+    <ui:LogMessage DisplayName="Log Message - BuyWays Login Complete" sap:VirtualizedContainerService.HintSize="578,101" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;BuyWays login successful&quot;]" />
   </Sequence>
 </Activity>

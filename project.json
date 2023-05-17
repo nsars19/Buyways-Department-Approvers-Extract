@@ -3,7 +3,7 @@
   "description": "A process to generate & upload into a storage bucket the Department Approvers report on Buyways",
   "main": "Main.xaml",
   "dependencies": {
-    "BuyWays.Login": "[1.0.2]",
+    "BuyWays.Login": "[1.0.5]",
     "BuyWays.Logout": "[1.0.2]",
     "KillAllChromeProcess": "[1.0.3]",
     "UiPath.Excel.Activities": "[2.12.3]",
