@@ -1,15 +1,18 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="DepartmentApproversReportGeneration" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="DepartmentApproversReportGeneration" this:DepartmentApproversReportGeneration.in_ExScreenshotsFolderPath="Exceptions_Screenshots" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_customFieldsURL" Type="InArgument(x:String)" />
     <x:Property Name="in_departmentApproversFilename" Type="InArgument(x:String)" />
+    <x:Property Name="io_ReportCreationException" Type="InOutArgument(s:Exception)" />
+    <x:Property Name="io_ZipCreationErrorMessage" Type="InOutArgument(x:String)" />
+    <x:Property Name="in_ExScreenshotsFolderPath" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1040,1820</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1082,2248</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DepartmentApproversReportGeneration_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <sco:Collection x:TypeArguments="x:String">
+    <scg:List x:TypeArguments="x:String" Capacity="68">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -44,7 +47,9 @@
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
       <x:String>System.Reflection</x:String>
-    </sco:Collection>
+      <x:String>UiPath.Platform.Triggers</x:String>
+      <x:String>UiPath.Platform.Triggers.Scope</x:String>
+    </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
     <sco:Collection x:TypeArguments="AssemblyReference">
@@ -81,59 +86,132 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DepartmentApproversReportGeneration" sap:VirtualizedContainerService.HintSize="476,1755" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DepartmentApproversReportGeneration" sap:VirtualizedContainerService.HintSize="534,2143" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="ScreenshotFilepath">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String" Value="" />
+        </Variable.Default>
+      </Variable>
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard WebDriverMode="{x:Null}" sap2010:Annotation.AnnotationText="Use BuyWays in a Chrome Browser" AttachMode="ByInstance" DisplayName="Use Browser Chrome: Import/Export URL" sap:VirtualizedContainerService.HintSize="434,1663" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="7b5679ea-60e8-4228-b4d4-4134d640becf" Version="V1" WindowResize="Maximize">
+    <uix:NApplicationCard WebDriverMode="{x:Null}" sap2010:Annotation.AnnotationText="Use BuyWays in a Chrome Browser" AttachMode="ByInstance" DisplayName="Use Browser Chrome: Import/Export URL" sap:VirtualizedContainerService.HintSize="472,2021" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="7b5679ea-60e8-4228-b4d4-4134d640becf" Version="V1" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Start Report Generation Process" sap:VirtualizedContainerService.HintSize="376,1416" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <TryCatch DisplayName="Try Catch - Generate Report" sap:VirtualizedContainerService.HintSize="438,1764" sap2010:WorkflowViewState.IdRef="TryCatch_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log Message - Begin report generation" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Beginning report generation ui steps&quot;]" />
-            <ui:LogMessage DisplayName="Log Message - Unique Descriptor" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;adding unique descriptor to match report: &quot; + in_departmentApproversFilename]" />
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Add unique descriptor to 'Description' input" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,216" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="7b5679ea-60e8-4228-b4d4-4134d640becf" Text="[in_departmentApproversFilename]" Version="V1">
-              <uix:NTypeInto.Target>
-                <uix:TargetAnchorable BrowserURL="https://solutions.sciquest.com/apps/Router/CFValueCSVImportExport?tmstmp=1665167582300" DesignTimeRectangle="409, 380, 263, 91" ElementType="InputBox" FriendlyName="'TEXTAREA JobSubmission_…'" FullSelectorArgument="&lt;webctrl tableRow='7' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TEXTAREA' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TEXTAREA' class='' aaname='' /&gt;" Guid="b6db395c-f090-4e0d-85fd-bf06712635eb" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAQsAAABfCAYAAAD/PeIHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFrSURBVHhe7djRDYJQEEVBq6U+i7AOW8E8EgiC4ClgJrnZDs7HPmaAQCyAZIvF8/U2Mztt9RULgD2xABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxAG5N07RcsQAuraEYxAL4aR+KQSyAk2MoBrEAvhxD4WcBnFyFYhALYHEXikEsgL+hGMQCSC5jYWZ23GqLBcAdsQCCef4ASqry4XwQ0noAAAAASUVORK5CYII=" InformativeScreenshot="540842cea5204b0659b38c40b5ccf3ea.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Custom Field - CSV Values Import/Export' /&gt;" SearchSteps="FuzzySelector" Visibility="Interactive">
-                  <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                      <uix:Target DesignTimeRectangle="110, 381, 66, 15" ElementType="Text" FriendlyName="'Description'" FullSelectorArgument="&lt;webctrl aria-role='presentation' parentname='RequestForm' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='7' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' parentname='RequestForm' tag='TABLE' /&gt;&lt;webctrl type='' tag='A' class='FieldReq HasHoverHelp' aaname='Description' check:innerText='Description' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEYAAAATCAYAAAAtbXvAAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQ0SURBVFhH7VYrjOQ4EG02sGHDhg0DGzYMDGxoGBgYfsToFGlJpCXRoWhRNOAUjbRSVlqQnSGeRRlmaBgY+LbKdj490/Pbk+YWdEmWLFe5XH71quwVLnJWLsA8IxdgnpELMM/IBMxgWlRliXIcVYOuH7z2o6SHKiUSWdHZfunN8l/2PpUJmL6V2K9WWJ2MHUSh6MgPkkEhC/ncELl6LSkGTZZAxBKVJtt37X1dngITStRtgypPEK75oABpbbwVy4Bed+i0odlj6aE71vVndAMM7zMzzEOv0ZG9Jmb2RkMbg67OkeW1zbo9p9PoB3cm2/mdMF0NaYEIkFSKdKd7RxnIr/PhF1gG4+KkWIbBxbwIy8oTYK6OJTgBLKZOENDaWvi1vkUudhQMB0QjiFEq59G0OcTOr7MfBtg7Mm0BEcy63TFHawboIprWeBz+KvF3xPMIBV2mijcneh6hrAlAYsdhub6B+PIV+bSXzh00ahlhM9kEiIvWsn9QGQ52bYftqL8KkbUzAV4EZtAlxIY27RI0xJA6caDshUQuhQVtFWZQHKjN3h5xRllLDtZul9QwpkZiAQsgZA4p9s5HeoOfC2CCSCD95198OgfMXkBmKaKt85Nc/0RbZR7sDSJZoLm/XQDToyuOuOK9h5hYJL2tY/8MzBphkkHGLt7NSACSF4EhyiDmS21j1HcVYg5sK1A0Cp0aqUyB3H5Duuc5AZNXaJraNfBa4aGObVYsSOyTWZcIAvAa3z87YPbSZRJDt7jcCAxdpnGs1JXzFaQNlYZGebwi/QEZ95Tl3vt7P5/7Td+kNpHbmBg3AuPvOhHgQEn2JfUqY47cZ4IUN7c5Qnb2ZOwhiYK6lqf6Q4Kyo3XPijBXj/rOXEqT7iww7N9F2/sL2dKm/vQsMLc3SJkhnFBfHUNXIOK4ohz3P5yf8a7vBIaev9wFvo0r6AcP0sgYalhKtWhbaoraP/X0xLdNRYxw1OQLfP8ibJ3bLLNbynRbMZu+4c4z5q3AcM/bkb1l34uM+eFLm/1Yz9P9uFwefgeYVSCoJjOkR9cLVuuI6EjWdHBxXNu1Q5yhKAvIY4AtNdmbuxm0vG7RlK5p88EPBKg9dB0izUsUqWuIu+T6jcBQYo4SRZEhtg13i7jS9JqQXnA8rsfUJz3GoM3Cxd4ciQWKmnRJL5Rn3vuAWYx1SOWg5k49aO4rDpxx8Cth6MlThbDZnHQbAtR2eSqZOnU1PY59Qn8PeibfVEqLfTSCuIQjwYCuFFj79ejz10XjJoNeoYh9cv3YJ/T5YyDeAwy/7Vwe06DAz4p99xWVEZXTo8ff/hloXSn6F9jgZ7F/FtbRhcc/xfSPmYz9X8famLn5UhOf9npLJ2yv0JJO9/1ir1d7fzbW5X3Gf8z43/J/meXfbAbmj5MRmLnHfKRcgHlG/mBg/l+5AHNWgF/eV0I/txN4RwAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector" />
-                    </scg:List>
-                  </uix:TargetAnchorable.Anchors>
-                </uix:TargetAnchorable>
-              </uix:NTypeInto.Target>
-            </uix:NTypeInto>
-            <ui:LogMessage DisplayName="Log Message - Set Custom field dropdown" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Setting Custom Field dropdown to 'Department'&quot;]" />
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DeselectAfter="True" DisplayName="Type 'department' into 'Custom Field' dropdown" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,216" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="7b5679ea-60e8-4228-b4d4-4134d640becf" Text="department" Version="V1">
-              <uix:NTypeInto.Target>
-                <uix:TargetAnchorable BrowserURL="https://solutions.sciquest.com/apps/Router/CFValueCSVImportExport?tmstmp=1665167582300" DesignTimeRectangle="409, 528, 372, 19" ElementType="DropDown" FriendlyName="'Department (Department)'" FullSelectorArgument="&lt;webctrl aria-role='presentation' parentname='RequestForm' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='11' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' parentname='RequestForm' tag='TABLE' /&gt;&lt;webctrl type='' tag='SELECT' class='' aaname='' /&gt;" Guid="edf8073f-0632-45a6-9c8d-f2286994203f" ImageBase64="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" InformativeScreenshot="fb317d37e5ade2475dd880e88efc5fb0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Custom Field - CSV Values Import/Export' /&gt;" SearchSteps="FuzzySelector" Visibility="Interactive">
-                  <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                      <uix:Target DesignTimeRectangle="110, 529, 76, 15" ElementType="Text" FriendlyName="'Custom Field'" FullSelectorArgument="&lt;webctrl aria-role='presentation' parentname='RequestForm' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='11' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' parentname='RequestForm' tag='TABLE' /&gt;&lt;webctrl type='' tag='A' class='FieldOpt HasHoverHelp' aaname='Custom Field' check:innerText='Custom Field' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFAAAAATCAYAAAAH3YpvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKMSURBVFhH7ZahtqMwEIZ5i0hkJRJZiURGVlYieYRIJBKJrEQikUgkEhmJ/HcSQhsopb03uzXLf057CJkkky+TGTwcctIB0FEHQEcdAB31HwGU6LvBPO9oKBF7Ao1pLtVAeDFKa5oVwBFdmSA6MXieB3biEFVv+hzUCHhxiQ/cd9JQxtrv9U8oGl2OM0tQjZPtS7kA7EsOP8rQyKk9DhXSkCGt3636Rt8E6LrO7wFSJzsj70zTSDt1regCKA4eYnv0AoyJXl+dOsOJ52iJuxrziIZ5cdvWR3ghW3No05wZyozjxKjfj5BU3cOencDzlmZ41i7AFZixK5FEvvbLjygy54u2spO1eKybCVxeAtwlP2kXYJshCFLUGoSkrhAsraeNriJQVlewUNxtu4KDzf3KlpzMu4morFMEtMm46Ke5ZIWEDpqaT/oYIM1xZSFd7WmN4Ub+RAX0lLadfrZ9EQhfAtSOOwDsC0SMI2/MRulfShMnC4ADbtxDskgLLbLAQFnBphdIF04PKGOT11bazIGzoQVmuHF4iTlcLetqfmpn9PcikCS7G8TlTFdPXeFHLl0DfAZgvdsAuHT6DcDFWEs2mC3QlHZEu2G3WGgP4FgjdcmBo8QccCr6+oLG8dvUtwK4HYEBMrWBbwBUkZVuTKD06wgk6SrMi3tCn6pwQM5OU8wO6lwxDqiS4O7wSLmKUQWfxz4BPOeYz2aZAwk2rXvPQV8ASGTAqThl8xWRDXJh9rWwU8+f5kCt5XegH14eiyiNPcrLCYz61Ddinl0th0e0xdWqwgRIe6S6KMJ0xeO4aeN3VfgfAyTZVVjt5b7PlZ1sMsTGz0gUyOJdgId+qgOgow6AjjoAOuoA6CTgD5+yoXl9CK6dAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector" />
-                    </scg:List>
-                  </uix:TargetAnchorable.Anchors>
-                </uix:TargetAnchorable>
-              </uix:NTypeInto.Target>
-            </uix:NTypeInto>
-            <ui:LogMessage DisplayName="Log Message - Submit report" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Submitting report&quot;]" />
-            <uix:NClick ClickType="Single" DisplayName="Click 'Submit' to begin generating report" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7b5679ea-60e8-4228-b4d4-4134d640becf" Version="V1">
-              <uix:NClick.Target>
-                <uix:TargetAnchorable BrowserURL="https://solutions.sciquest.com/apps/Router/CFValueCSVImportExport?tmstmp=1665167582300" DesignTimeRectangle="410, 573, 52, 20" ElementType="Button" FriendlyName="'Submit'" FullSelectorArgument="&lt;webctrl aria-role='presentation' parentname='RequestForm' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='14' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' parentname='RequestForm' tag='TABLE' /&gt;&lt;webctrl type='button' tag='INPUT' class='ButtonReq' aaname='Submit' check:text='Submit' /&gt;" Guid="c58e6aa1-8c7f-43e5-9a69-6e9d17f8cf76" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADgAAAAYCAYAAACvKj4oAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAM1SURBVFhH5ZTvS1NRGMf3/whBUCyyJBIxAkEKoqIfbzJChgwZEhEREb0UTUJ60ZuK3uhUYpuSEeYLmz/mmpZZbmz+aD+Sze1ud3PL+HbPj+vOvJeDvbzrgQ/sOd/nec753nPvbKjz+H8M2my2ukGMGoM3n5Qsj9Tgtceq5ZEavPIob3mkBi89zFoeqcGLDzLm9PjRdONtle64eZ1AWyep/YZ2E+1fYHP8aDPRzJAabL+/bcQ1g/6VCq/ikSqY1+6Tx5JKCnfx3lQ/LPqcPSx5Sb6Jc9fHcMq5eaCuitRg272Ugec/ylTPRxS+pmApUqypMaIgxA1OmuqHRdurSOb8xnuS92QQI2kyb1LLkBo8fzdhYDJJ1DICL91odolaFM1X3bB3rJrkOXymBlX4OrQ1sq7R5GS9rQ6ST6NJ0OyOEOunTKOF79NCa0JodYVg/6iQocDPGFvjNSJSg609WwYGw394BRCdGsLxy1M4S7Uc1smiWsCgId9BkBosI09vgIXydY32TiRIVqthS2X9NMpYGAprM/U5JUzMH/hMUME7fkYRqcFm14YpEyleRKOM+TfL2nqOvS6aoWe0TswzWKQHA9bniJbhN1rG4sgGxqlBIEY13qe9hsExLZ/bpRkSOdrH5pQwTvaYLVGJaaTXiNTgme6ohDSC+hMv5PC0O8sN5TFAdTFP84MV4eP9A9/ZDcT8UfiowQoWR4U+vXY0D/oiJrJ0z5o5fn4AqrG5B5EaPO2MGGjs8KNxP9/CQoFUl+BzKuxgmtk+qqURpXke/c5tBGhdFh4H0VbQ+4X9WcVmI/DGya8KAiNE22F9mgkvmTPCDcZ3NE2fwzX9BqlGeo1IDZ7sWjPgiWcxeuE1GggvksiRYrWIvq5fCNCny/VXaXawgkI19iCAyAfSG0aEZmV46Uzyu4IFN9kjs2/QQ/Z0K9xgRtP0ObpWZNpmWJs5gxP8jCJSg3bHqgEP/RcVY1e7Fa5/4t8LCXWPba6q6HWkuHkx9hAYFmfqeZYb5HOHVTYnmdU0fU51z+p5hHMISA0e61yxPFKDR+8sWx6pwSO3Q5ZHarDhVtDySA3WC2LUZnUYdW4Q+AtF+nuvYQENcwAAAABJRU5ErkJggg==" InformativeScreenshot="0c07347f25c977b545ae7ca30c673238.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Custom Field - CSV Values Import/Export' /&gt;" SearchSteps="FuzzySelector" Visibility="Interactive" />
-              </uix:NClick.Target>
-            </uix:NClick>
-            <ui:LogMessage DisplayName="Log Message - Completed Report Generation Sequence" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Finished click sequence for report generation&quot;]" />
-          </Sequence>
+            <TryCatch.Try>
+              <Sequence DisplayName="Start Report Generation Process" sap:VirtualizedContainerService.HintSize="400,1527" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message - Begin report generation" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Beginning report generation ui steps&quot;]" />
+                <ui:LogMessage DisplayName="Log Message - Unique Descriptor" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_8" Message="[&quot;adding unique descriptor to match report: &quot; + in_departmentApproversFilename]" />
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Add unique descriptor to 'Description' input" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="338,226" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="7b5679ea-60e8-4228-b4d4-4134d640becf" Text="[in_departmentApproversFilename]" Version="V1">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable BrowserURL="https://solutions.sciquest.com/apps/Router/CFValueCSVImportExport?tmstmp=1665167582300" DesignTimeRectangle="409, 380, 263, 91" ElementType="InputBox" FriendlyName="'TEXTAREA JobSubmission_…'" FullSelectorArgument="&lt;webctrl tableRow='7' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TEXTAREA' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TEXTAREA' class='' aaname='' /&gt;" Guid="b6db395c-f090-4e0d-85fd-bf06712635eb" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAQsAAABfCAYAAAD/PeIHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFrSURBVHhe7djRDYJQEEVBq6U+i7AOW8E8EgiC4ClgJrnZDs7HPmaAQCyAZIvF8/U2Mztt9RULgD2xABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxABKxAG5N07RcsQAuraEYxAL4aR+KQSyAk2MoBrEAvhxD4WcBnFyFYhALYHEXikEsgL+hGMQCSC5jYWZ23GqLBcAdsQCCef4ASqry4XwQ0noAAAAASUVORK5CYII=" InformativeScreenshot="540842cea5204b0659b38c40b5ccf3ea.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Custom Field - CSV Values Import/Export' /&gt;" SearchSteps="FuzzySelector" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="110, 381, 66, 15" ElementType="Text" FriendlyName="'Description'" FullSelectorArgument="&lt;webctrl aria-role='presentation' parentname='RequestForm' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='7' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' parentname='RequestForm' tag='TABLE' /&gt;&lt;webctrl type='' tag='A' class='FieldReq HasHoverHelp' aaname='Description' check:innerText='Description' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEYAAAATCAYAAAAtbXvAAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQ0SURBVFhH7VYrjOQ4EG02sGHDhg0DGzYMDGxoGBgYfsToFGlJpCXRoWhRNOAUjbRSVlqQnSGeRRlmaBgY+LbKdj490/Pbk+YWdEmWLFe5XH71quwVLnJWLsA8IxdgnpELMM/IBMxgWlRliXIcVYOuH7z2o6SHKiUSWdHZfunN8l/2PpUJmL6V2K9WWJ2MHUSh6MgPkkEhC/ncELl6LSkGTZZAxBKVJtt37X1dngITStRtgypPEK75oABpbbwVy4Bed+i0odlj6aE71vVndAMM7zMzzEOv0ZG9Jmb2RkMbg67OkeW1zbo9p9PoB3cm2/mdMF0NaYEIkFSKdKd7RxnIr/PhF1gG4+KkWIbBxbwIy8oTYK6OJTgBLKZOENDaWvi1vkUudhQMB0QjiFEq59G0OcTOr7MfBtg7Mm0BEcy63TFHawboIprWeBz+KvF3xPMIBV2mijcneh6hrAlAYsdhub6B+PIV+bSXzh00ahlhM9kEiIvWsn9QGQ52bYftqL8KkbUzAV4EZtAlxIY27RI0xJA6caDshUQuhQVtFWZQHKjN3h5xRllLDtZul9QwpkZiAQsgZA4p9s5HeoOfC2CCSCD95198OgfMXkBmKaKt85Nc/0RbZR7sDSJZoLm/XQDToyuOuOK9h5hYJL2tY/8MzBphkkHGLt7NSACSF4EhyiDmS21j1HcVYg5sK1A0Cp0aqUyB3H5Duuc5AZNXaJraNfBa4aGObVYsSOyTWZcIAvAa3z87YPbSZRJDt7jcCAxdpnGs1JXzFaQNlYZGebwi/QEZ95Tl3vt7P5/7Td+kNpHbmBg3AuPvOhHgQEn2JfUqY47cZ4IUN7c5Qnb2ZOwhiYK6lqf6Q4Kyo3XPijBXj/rOXEqT7iww7N9F2/sL2dKm/vQsMLc3SJkhnFBfHUNXIOK4ohz3P5yf8a7vBIaev9wFvo0r6AcP0sgYalhKtWhbaoraP/X0xLdNRYxw1OQLfP8ibJ3bLLNbynRbMZu+4c4z5q3AcM/bkb1l34uM+eFLm/1Yz9P9uFwefgeYVSCoJjOkR9cLVuuI6EjWdHBxXNu1Q5yhKAvIY4AtNdmbuxm0vG7RlK5p88EPBKg9dB0izUsUqWuIu+T6jcBQYo4SRZEhtg13i7jS9JqQXnA8rsfUJz3GoM3Cxd4ciQWKmnRJL5Rn3vuAWYx1SOWg5k49aO4rDpxx8Cth6MlThbDZnHQbAtR2eSqZOnU1PY59Qn8PeibfVEqLfTSCuIQjwYCuFFj79ejz10XjJoNeoYh9cv3YJ/T5YyDeAwy/7Vwe06DAz4p99xWVEZXTo8ff/hloXSn6F9jgZ7F/FtbRhcc/xfSPmYz9X8famLn5UhOf9npLJ2yv0JJO9/1ir1d7fzbW5X3Gf8z43/J/meXfbAbmj5MRmLnHfKRcgHlG/mBg/l+5AHNWgF/eV0I/txN4RwAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                </uix:NTypeInto>
+                <ui:LogMessage DisplayName="Log Message - Set Custom field dropdown" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Setting Custom Field dropdown to 'Department'&quot;]" />
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DeselectAfter="True" DisplayName="Type 'department' into 'Custom Field' dropdown" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="338,226" sap2010:WorkflowViewState.IdRef="NTypeInto_4" ScopeIdentifier="7b5679ea-60e8-4228-b4d4-4134d640becf" Text="department" Version="V1">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable BrowserURL="https://solutions.sciquest.com/apps/Router/CFValueCSVImportExport?tmstmp=1665167582300" DesignTimeRectangle="409, 528, 372, 19" ElementType="DropDown" FriendlyName="'Department (Department)'" FullSelectorArgument="&lt;webctrl aria-role='presentation' parentname='RequestForm' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='11' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' parentname='RequestForm' tag='TABLE' /&gt;&lt;webctrl type='' tag='SELECT' class='' aaname='' /&gt;" Guid="edf8073f-0632-45a6-9c8d-f2286994203f" ImageBase64="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" InformativeScreenshot="fb317d37e5ade2475dd880e88efc5fb0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Custom Field - CSV Values Import/Export' /&gt;" SearchSteps="FuzzySelector" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="110, 529, 76, 15" ElementType="Text" FriendlyName="'Custom Field'" FullSelectorArgument="&lt;webctrl aria-role='presentation' parentname='RequestForm' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='11' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' parentname='RequestForm' tag='TABLE' /&gt;&lt;webctrl type='' tag='A' class='FieldOpt HasHoverHelp' aaname='Custom Field' check:innerText='Custom Field' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFAAAAATCAYAAAAH3YpvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKMSURBVFhH7ZahtqMwEIZ5i0hkJRJZiURGVlYieYRIJBKJrEQikUgkEhmJ/HcSQhsopb03uzXLf057CJkkky+TGTwcctIB0FEHQEcdAB31HwGU6LvBPO9oKBF7Ao1pLtVAeDFKa5oVwBFdmSA6MXieB3biEFVv+hzUCHhxiQ/cd9JQxtrv9U8oGl2OM0tQjZPtS7kA7EsOP8rQyKk9DhXSkCGt3636Rt8E6LrO7wFSJzsj70zTSDt1regCKA4eYnv0AoyJXl+dOsOJ52iJuxrziIZ5cdvWR3ghW3No05wZyozjxKjfj5BU3cOencDzlmZ41i7AFZixK5FEvvbLjygy54u2spO1eKybCVxeAtwlP2kXYJshCFLUGoSkrhAsraeNriJQVlewUNxtu4KDzf3KlpzMu4morFMEtMm46Ke5ZIWEDpqaT/oYIM1xZSFd7WmN4Ub+RAX0lLadfrZ9EQhfAtSOOwDsC0SMI2/MRulfShMnC4ADbtxDskgLLbLAQFnBphdIF04PKGOT11bazIGzoQVmuHF4iTlcLetqfmpn9PcikCS7G8TlTFdPXeFHLl0DfAZgvdsAuHT6DcDFWEs2mC3QlHZEu2G3WGgP4FgjdcmBo8QccCr6+oLG8dvUtwK4HYEBMrWBbwBUkZVuTKD06wgk6SrMi3tCn6pwQM5OU8wO6lwxDqiS4O7wSLmKUQWfxz4BPOeYz2aZAwk2rXvPQV8ASGTAqThl8xWRDXJh9rWwU8+f5kCt5XegH14eiyiNPcrLCYz61Ddinl0th0e0xdWqwgRIe6S6KMJ0xeO4aeN3VfgfAyTZVVjt5b7PlZ1sMsTGz0gUyOJdgId+qgOgow6AjjoAOuoA6CTgD5+yoXl9CK6dAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                </uix:NTypeInto>
+                <ui:LogMessage DisplayName="Log Message - Submit report" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Submitting report&quot;]" />
+                <uix:NClick ClickType="Single" DisplayName="Click 'Submit' to begin generating report" sap:VirtualizedContainerService.HintSize="338,166" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7b5679ea-60e8-4228-b4d4-4134d640becf" Version="V1">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable BrowserURL="https://solutions.sciquest.com/apps/Router/CFValueCSVImportExport?tmstmp=1665167582300" DesignTimeRectangle="410, 573, 52, 20" ElementType="Button" FriendlyName="'Submit'" FullSelectorArgument="&lt;webctrl aria-role='presentation' parentname='RequestForm' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='14' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' parentname='RequestForm' tag='TABLE' /&gt;&lt;webctrl type='button' tag='INPUT' class='ButtonReq' aaname='Submit' check:text='Submit' /&gt;" Guid="c58e6aa1-8c7f-43e5-9a69-6e9d17f8cf76" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADgAAAAYCAYAAACvKj4oAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAM1SURBVFhH5ZTvS1NRGMf3/whBUCyyJBIxAkEKoqIfbzJChgwZEhEREb0UTUJ60ZuK3uhUYpuSEeYLmz/mmpZZbmz+aD+Sze1ud3PL+HbPj+vOvJeDvbzrgQ/sOd/nec753nPvbKjz+H8M2my2ukGMGoM3n5Qsj9Tgtceq5ZEavPIob3mkBi89zFoeqcGLDzLm9PjRdONtle64eZ1AWyep/YZ2E+1fYHP8aDPRzJAabL+/bcQ1g/6VCq/ikSqY1+6Tx5JKCnfx3lQ/LPqcPSx5Sb6Jc9fHcMq5eaCuitRg272Ugec/ylTPRxS+pmApUqypMaIgxA1OmuqHRdurSOb8xnuS92QQI2kyb1LLkBo8fzdhYDJJ1DICL91odolaFM1X3bB3rJrkOXymBlX4OrQ1sq7R5GS9rQ6ST6NJ0OyOEOunTKOF79NCa0JodYVg/6iQocDPGFvjNSJSg609WwYGw394BRCdGsLxy1M4S7Uc1smiWsCgId9BkBosI09vgIXydY32TiRIVqthS2X9NMpYGAprM/U5JUzMH/hMUME7fkYRqcFm14YpEyleRKOM+TfL2nqOvS6aoWe0TswzWKQHA9bniJbhN1rG4sgGxqlBIEY13qe9hsExLZ/bpRkSOdrH5pQwTvaYLVGJaaTXiNTgme6ohDSC+hMv5PC0O8sN5TFAdTFP84MV4eP9A9/ZDcT8UfiowQoWR4U+vXY0D/oiJrJ0z5o5fn4AqrG5B5EaPO2MGGjs8KNxP9/CQoFUl+BzKuxgmtk+qqURpXke/c5tBGhdFh4H0VbQ+4X9WcVmI/DGya8KAiNE22F9mgkvmTPCDcZ3NE2fwzX9BqlGeo1IDZ7sWjPgiWcxeuE1GggvksiRYrWIvq5fCNCny/VXaXawgkI19iCAyAfSG0aEZmV46Uzyu4IFN9kjs2/QQ/Z0K9xgRtP0ObpWZNpmWJs5gxP8jCJSg3bHqgEP/RcVY1e7Fa5/4t8LCXWPba6q6HWkuHkx9hAYFmfqeZYb5HOHVTYnmdU0fU51z+p5hHMISA0e61yxPFKDR+8sWx6pwSO3Q5ZHarDhVtDySA3WC2LUZnUYdW4Q+AtF+nuvYQENcwAAAABJRU5ErkJggg==" InformativeScreenshot="0c07347f25c977b545ae7ca30c673238.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Custom Field - CSV Values Import/Export' /&gt;" SearchSteps="FuzzySelector" Visibility="Interactive" />
+                  </uix:NClick.Target>
+                </uix:NClick>
+                <ui:LogMessage DisplayName="Log Message - Completed Report Generation Sequence" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Finished click sequence for report generation&quot;]" />
+              </Sequence>
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                  </ActivityAction.Argument>
+                  <Sequence sap2010:Annotation.AnnotationText="Assign exception message to variable for use in end-process email." DisplayName="Sequence - Report Creation Exception" sap:VirtualizedContainerService.HintSize="400,638" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="in_ExScreenshotsFolderPath" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Take screenshot on report generation exception" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_Folder">
+                          <Literal x:TypeArguments="x:String">Exceptions_Screenshots</Literal>
+                        </InArgument>
+                        <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">
+                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="ScreenshotFilepath" />
+                        </InOutArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                    <Assign DisplayName="Assign ReportCreation Exception" sap:VirtualizedContainerService.HintSize="338,71" sap2010:WorkflowViewState.IdRef="Assign_3">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="s:Exception">[io_ReportCreationException]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="s:Exception">[exception]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="Assign Report Creation Exception Message" sap:VirtualizedContainerService.HintSize="338,71" sap2010:WorkflowViewState.IdRef="Assign_4">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[io_ZipCreationErrorMessage]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[exception.Message]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:LogMessage DisplayName="Log Exception Message" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Error" Message="[&quot;Error during zip file creation: &quot; + exception.Message]" />
+                  </Sequence>
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+          </TryCatch>
         </ActivityAction>
       </uix:NApplicationCard.Body>
       <uix:NApplicationCard.TargetApp>
@@ -142,6 +220,8 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </uix:NApplicationCard>
