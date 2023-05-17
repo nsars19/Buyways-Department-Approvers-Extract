@@ -6,13 +6,13 @@
     <x:Property Name="in_departmentApproversFilename" Type="InArgument(x:String)" />
     <x:Property Name="io_csvFileName" Type="InOutArgument(x:String)" />
     <x:Property Name="io_ReportDownloadException" Type="InOutArgument(s:Exception)" />
-    <x:Property Name="io_ZipDownloadErrorMessage" Type="InArgument(x:String)" />
+    <x:Property Name="io_ZipDownloadErrorMessage" Type="InOutArgument(x:String)" />
     <x:Property Name="in_ExScreenshotsFolderPath" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1090,4720</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1147,5031</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DepartmentApproversReportDownload_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -88,9 +88,11 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DepartmentApproversReportDownload" sap:VirtualizedContainerService.HintSize="1100,4655" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DepartmentApproversReportDownload" sap:VirtualizedContainerService.HintSize="1148,4966" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="reportComplete" />
       <Variable x:TypeArguments="x:Int32" Default="1" Name="currentRefreshCount" />
@@ -109,7 +111,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:MultipleAssign DisplayName="Assign variables for Report Download process" sap:VirtualizedContainerService.HintSize="1038,110" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign DisplayName="Assign variables for Report Download process" sap:VirtualizedContainerService.HintSize="1086,110" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -123,40 +125,41 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Browser Chrome: Import/Export URL" sap:VirtualizedContainerService.HintSize="1038,4383" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="50d8ec10-3cb7-492d-9e8b-53bed36ff72e" Version="V1" WindowResize="Maximize">
+    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Browser Chrome: Import/Export URL" sap:VirtualizedContainerService.HintSize="1086,4694" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="50d8ec10-3cb7-492d-9e8b-53bed36ff72e" Version="V1" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <TryCatch DisplayName="Try Catch - Report Download Process" sap:VirtualizedContainerService.HintSize="1004,4157" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+          <TryCatch DisplayName="Try Catch - Report Download Process" sap:VirtualizedContainerService.HintSize="1052,4468" sap2010:WorkflowViewState.IdRef="TryCatch_1">
             <TryCatch.Try>
-              <Sequence DisplayName="File Download Wait Sequence" sap:VirtualizedContainerService.HintSize="966,3920" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <Sequence DisplayName="File Download Wait Sequence" sap:VirtualizedContainerService.HintSize="1014,4231" sap2010:WorkflowViewState.IdRef="Sequence_8">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message - loop start" sap:VirtualizedContainerService.HintSize="904,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Beginning loop to check for completed report&quot;]" />
-                <ui:InterruptibleWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Refresh the page every {{refreshInterval}} seconds, and then check the status of the report generation to determine whether to download the file, or refresh the page again" Condition="[reportComplete &lt;&gt; True and currentRefreshCount &lt;= in_maxRefreshCount]" DisplayName="While Report Status is not &quot;Completed&quot;" sap:VirtualizedContainerService.HintSize="904,1047" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+                <Throw Exception="[new Exception(&quot;test&quot;)]" sap:VirtualizedContainerService.HintSize="952,32" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                <ui:LogMessage DisplayName="Log Message - loop start" sap:VirtualizedContainerService.HintSize="952,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Beginning loop to check for completed report&quot;]" />
+                <ui:InterruptibleWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Refresh the page every {{refreshInterval}} seconds, and then check the status of the report generation to determine whether to download the file, or refresh the page again" Condition="[reportComplete &lt;&gt; True and currentRefreshCount &lt;= in_maxRefreshCount]" DisplayName="While Report Status is not &quot;Completed&quot;" sap:VirtualizedContainerService.HintSize="952,1096" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
                   <ui:InterruptibleWhile.Body>
-                    <Sequence DisplayName="Body of Report Generation while loop" sap:VirtualizedContainerService.HintSize="868,830" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                    <Sequence DisplayName="Body of Report Generation while loop" sap:VirtualizedContainerService.HintSize="916,890" sap2010:WorkflowViewState.IdRef="Sequence_4">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <uix:NCheckState Exists="{x:Null}" DisplayName="Check to see if the report is complete" sap:VirtualizedContainerService.HintSize="806,708" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="50d8ec10-3cb7-492d-9e8b-53bed36ff72e" Timeout="[in_refreshInterval]" Version="V1">
+                      <uix:NCheckState Exists="{x:Null}" DisplayName="Check to see if the report is complete" sap:VirtualizedContainerService.HintSize="854,768" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="50d8ec10-3cb7-492d-9e8b-53bed36ff72e" Timeout="[in_refreshInterval]" Version="V1">
                         <uix:NCheckState.IfExists>
-                          <Sequence DisplayName="Target appears - report complete" sap:VirtualizedContainerService.HintSize="376,328" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                          <Sequence DisplayName="Target appears - report complete" sap:VirtualizedContainerService.HintSize="400,378" sap2010:WorkflowViewState.IdRef="Sequence_2">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:LogMessage DisplayName="Log Message - report complete" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Report is complete&quot;]" />
-                            <Assign sap2010:Annotation.AnnotationText="Used to break out of the loop when the report is complete" DisplayName="Assign reportComplete to True" sap:VirtualizedContainerService.HintSize="334,103" sap2010:WorkflowViewState.IdRef="Assign_1">
+                            <ui:LogMessage DisplayName="Log Message - report complete" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Report is complete&quot;]" />
+                            <Assign sap2010:Annotation.AnnotationText="Used to break out of the loop when the report is complete" DisplayName="Assign reportComplete to True" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="Assign_1">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:Boolean">[reportComplete]</OutArgument>
                               </Assign.To>
@@ -172,19 +175,19 @@
                           </Sequence>
                         </uix:NCheckState.IfExists>
                         <uix:NCheckState.IfNotExists>
-                          <Sequence DisplayName="Target does not appear - report incomplete" sap:VirtualizedContainerService.HintSize="376,482" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                          <Sequence DisplayName="Target does not appear - report incomplete" sap:VirtualizedContainerService.HintSize="400,542" sap2010:WorkflowViewState.IdRef="Sequence_3">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:LogMessage DisplayName="Log Message - report incomplete" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Still processing - on count &quot; + currentRefreshCount.ToString + &quot; out of &quot; + in_maxRefreshCount.ToString]" />
-                            <uix:NClick ClickType="Single" DisplayName="Refresh the page" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50d8ec10-3cb7-492d-9e8b-53bed36ff72e" Version="V1">
+                            <ui:LogMessage DisplayName="Log Message - report incomplete" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Still processing - on count &quot; + currentRefreshCount.ToString + &quot; out of &quot; + in_maxRefreshCount.ToString]" />
+                            <uix:NClick ClickType="Single" DisplayName="Refresh the page" sap:VirtualizedContainerService.HintSize="338,166" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50d8ec10-3cb7-492d-9e8b-53bed36ff72e" Version="V1">
                               <uix:NClick.Target>
                                 <uix:TargetAnchorable BrowserURL="https://solutions.sciquest.com/apps/Router/CFValueCSVImportExport" DesignTimeRectangle="1782, 252, 86, 17" ElementType="Text" FriendlyName="'Refresh this Page'" FullSelectorArgument="&lt;webctrl tableRow='6' tag='TABLE' /&gt;&lt;webctrl aria-role='button' tableRow='1' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aria-role='button' type='' tag='A' class='btn btn-link btn-mini' aaname='Refresh this Page' check:innerText='Refresh this Page' /&gt;" Guid="a271d94c-fcd5-4553-b8d4-dfc7174416ad" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFoAAAAVCAYAAADGpvm7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAOESURBVFhH7ZaxayJBFMbvv0plZZXuqlSp7CxEEEIKGwkETLNNAmlsLEIgENJYSCAQLGwkENBG1F0V4+ZUojFnYhLhu/dmZnXduMZckr0r9oOBnZm3s/N+896b/QFfnsgH7ZF80B7JB+2RfNAe6ZOg73G+V0EgXEPGVEP/XK8Yv0zU8/+jGejrBtbClWkLbtdx3nxVky4qNRDQTAxV9+81RCbxwcPi/R52VMcm2lNQu11tTw6fAxEd6cKDmvxazYNO3KAnOq8YFhrYiLfQFv3F6mVriGY/j3k10A4bN9Af0ZzPpJ6JZKyG06bqf6FcQLM60MINFPlx1MVxgkuEjPRLk1LTHg3iPQZhQEtVERD9J5SPdKzzfKSGZO5erMrl5lIjGxVBx6UnGuN3q4hr0p7Hz/kbU/FerMhTsMV+DSS35Xgo3cGYTe0HYJrYUfPriSbKIzk81RufgeJhBdo1PYz6yOzXEORv0v61wm9pgAfkD+U4s9ghLsLe1V+pFSL6GVf0wXTpkcYnGJLd5p4sF/MRLWFpBbYDxoU6wumusMOgg4NtA5cDssoZ2EjfCRvoLWxR6ZGHVKXNsfUE7bMaAilntC6I6EQL5QEdyOgXtBgdDm9+CvoRl3tVpMtc/l5hnOjYyTnKghP04JbWkRE9Nu9wVVa+DejAVNCxX8HdG7RfeJy/K0G7+WvJtUavxevIi6iyR5NqMYoOmnkLegaCI2PunTA7TRNmG1uRCjZ26zjN9zHkDS+C+KYsLLOxzdnGexc6gpEqtvZbyOtWRNrk8DngzDwKMBGhoknQxVQFyfyzNCFZGeDqr9LiiKYTjMdoYQGBQddxxY8OvQdaK7jc/i9j9PQOzlOUgiI7vge00OgBRsnEQbyCeM4B2+6zQ72sjk3KKhkIszLKoO1+2UG7+ktyKR0TSrUaQid9eqYU1CqIng1kDRxQSpVkCi4DzSWCU8wQv1qPKBe6Ym3jTEc8q3KKU1Jkx3eA7uOUanhG/DlRKbww8NMqWZaWgObyFTpi/6lclluIvlM63Py15H4ZvtApUr0Sm7ddhrMLbDnoucuBWvSoKw9q4VqrgJ7QenyJOoGyFoEmKKUmolSm+PurXoZTqX3yu6H9OmW4gbyI7icU0+9chtSm/irNQPtaUVSKrHovInr+0nOTD/qjcvz2OX/j3OSD9kg+aI/kg/ZIPmiP5IP2RMAfd0QlteUAAoIAAAAASUVORK5CYII=" InformativeScreenshot="efbd91b9b027f419b5da300c84f47d4e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Custom Field - CSV Values Import/Export' /&gt;" SearchSteps="FuzzySelector, Image" Visibility="Interactive" />
                               </uix:NClick.Target>
                             </uix:NClick>
-                            <Assign DisplayName="Increment current refresh count" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+                            <Assign DisplayName="Increment current refresh count" sap:VirtualizedContainerService.HintSize="338,71" sap2010:WorkflowViewState.IdRef="Assign_2">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:Int32">[currentRefreshCount]</OutArgument>
                               </Assign.To>
@@ -214,9 +217,9 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:InterruptibleWhile>
-                <If Condition="[reportComplete]" DisplayName="Check if report is complete" sap:VirtualizedContainerService.HintSize="884,2021" sap2010:WorkflowViewState.IdRef="If_1">
+                <If Condition="[reportComplete]" DisplayName="Check if report is complete" sap:VirtualizedContainerService.HintSize="952,2151" sap2010:WorkflowViewState.IdRef="If_1">
                   <If.Then>
-                    <Sequence DisplayName="Report Complete Sequence" sap:VirtualizedContainerService.HintSize="476,1833" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <Sequence DisplayName="Report Complete Sequence" sap:VirtualizedContainerService.HintSize="496,1953" sap2010:WorkflowViewState.IdRef="Sequence_5">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -225,7 +228,7 @@
                       </sap:WorkflowViewStateService.ViewState>
                       <ui:LogMessage DisplayName="Log Message - Begin capture" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Beginning file name capture + download&quot;]" />
                       <ui:LogMessage DisplayName="Log Message - logging anchor selector" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Anchor selector for filename: &quot; + downloadAnchorSelector]" />
-                      <uix:NGetText DisplayName="Get the text of the filename" sap:VirtualizedContainerService.HintSize="434,156" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="50d8ec10-3cb7-492d-9e8b-53bed36ff72e" Version="V1">
+                      <uix:NGetText DisplayName="Get the text of the filename" sap:VirtualizedContainerService.HintSize="434,166" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="50d8ec10-3cb7-492d-9e8b-53bed36ff72e" Version="V1">
                         <uix:NGetText.Target>
                           <uix:TargetAnchorable BrowserURL="https://solutions.sciquest.com/apps/Router/CFValueCSVImportExport" DesignTimeRectangle="1386, 532, 171, 15" ElementType="Text" FriendlyName="'Values_53360787.csv(882…'" FullSelectorArgument="&lt;webctrl tableRow='2' tag='TABLE' /&gt;&lt;webctrl aaname='Values_*.csv*' tableRow='6' tag='A' /&gt;" FuzzySelectorArgument="[fileNameSelector]" Guid="f5a3acda-0434-4889-99c3-70fcc4ddf709" ImageBase64="" InformativeScreenshot="21d435a8d6f4ef96d138084391365590.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Custom Field - CSV Values Import/Export' /&gt;" SearchSteps="FuzzySelector" Visibility="Interactive">
                             <uix:TargetAnchorable.Anchors>
@@ -240,9 +243,9 @@
                           <OutArgument x:TypeArguments="x:String">[io_csvFileName]</OutArgument>
                         </uix:NGetText.Text>
                       </uix:NGetText>
-                      <ui:LogMessage DisplayName="Log Message - Filename" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Found filename: &quot; + io_csvFileName]" />
-                      <ui:LogMessage DisplayName="Log Message - Extract Filename" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Extracting file name and extension from &quot; + io_csvFileName]" />
-                      <Assign sap2010:Annotation.AnnotationText="Extracts the filename + extension from the fileName variable. eg. pulls out &quot;Values_1239823.csv&quot; from &quot;Values_1239823.csv(8804k)&quot;" DisplayName="Extract filename" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="Assign_3">
+                      <ui:LogMessage DisplayName="Log Message - Filename" sap:VirtualizedContainerService.HintSize="434,101" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Found filename: &quot; + io_csvFileName]" />
+                      <ui:LogMessage DisplayName="Log Message - Extract Filename" sap:VirtualizedContainerService.HintSize="434,101" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Extracting file name and extension from &quot; + io_csvFileName]" />
+                      <Assign sap2010:Annotation.AnnotationText="Extracts the filename + extension from the fileName variable. eg. pulls out &quot;Values_1239823.csv&quot; from &quot;Values_1239823.csv(8804k)&quot;" DisplayName="Extract filename" sap:VirtualizedContainerService.HintSize="434,143" sap2010:WorkflowViewState.IdRef="Assign_3">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:String">[io_csvFileName]</OutArgument>
                         </Assign.To>
@@ -255,12 +258,12 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </Assign>
-                      <ui:LogMessage DisplayName="Log Message - Extracted Filename" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Extracted &quot; + io_csvFileName + &quot; from file name&quot;]" />
-                      <ui:LogMessage DisplayName="Log Message - File download" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Beginning file download&quot;]" />
-                      <ui:GetLastDownloadedFile File="{x:Null}" Timeout="{x:Null}" DisplayName="Wait for Dept Approvers report to download" DownloadFolder="[&quot;C:\Users\&quot; + Environment.UserName + &quot;\Downloads&quot;]" sap:VirtualizedContainerService.HintSize="434,453" sap2010:WorkflowViewState.IdRef="GetLastDownloadedFile_1" IgnoreFiles="zip">
+                      <ui:LogMessage DisplayName="Log Message - Extracted Filename" sap:VirtualizedContainerService.HintSize="434,101" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Extracted &quot; + io_csvFileName + &quot; from file name&quot;]" />
+                      <ui:LogMessage DisplayName="Log Message - File download" sap:VirtualizedContainerService.HintSize="434,101" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Beginning file download&quot;]" />
+                      <ui:GetLastDownloadedFile File="{x:Null}" Timeout="{x:Null}" DisplayName="Wait for Dept Approvers report to download" DownloadFolder="[&quot;C:\Users\&quot; + Environment.UserName + &quot;\Downloads&quot;]" sap:VirtualizedContainerService.HintSize="434,473" sap2010:WorkflowViewState.IdRef="GetLastDownloadedFile_1" IgnoreFiles="zip">
                         <ui:GetLastDownloadedFile.Body>
                           <ActivityAction>
-                            <uix:NClick sap2010:Annotation.AnnotationText="Clicks the link to begin the download of the file, and waits {{downloadWaitTime}} minutes" ClickType="Single" DisplayName="Click the link to download the file" sap:VirtualizedContainerService.HintSize="334,198" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50d8ec10-3cb7-492d-9e8b-53bed36ff72e" Version="V1">
+                            <uix:NClick sap2010:Annotation.AnnotationText="Clicks the link to begin the download of the file, and waits {{downloadWaitTime}} minutes" ClickType="Single" DisplayName="Click the link to download the file" sap:VirtualizedContainerService.HintSize="334,208" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="50d8ec10-3cb7-492d-9e8b-53bed36ff72e" Version="V1">
                               <uix:NClick.Target>
                                 <uix:TargetAnchorable BrowserURL="https://solutions.sciquest.com/apps/Router/CFValueCSVImportExport" DesignTimeRectangle="1386, 532, 171, 15" ElementType="Text" FriendlyName="'Values_53360787.csv(882…'" FullSelectorArgument="&lt;webctrl tableRow='2' tag='TABLE' /&gt;&lt;webctrl aaname='Values_*.csv*' tableRow='6' tag='A' /&gt;" FuzzySelectorArgument="[fileNameSelector]" Guid="0e04ddaa-234b-4d5d-a3e2-cf8662850472" ImageBase64="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" InformativeScreenshot="e64755e429b3fecb27778d712b0119ca.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Custom Field - CSV Values Import/Export' /&gt;" SearchSteps="FuzzySelector" Visibility="Interactive">
                                   <uix:TargetAnchorable.Anchors>
@@ -282,7 +285,7 @@
                           </ActivityAction>
                         </ui:GetLastDownloadedFile.Body>
                       </ui:GetLastDownloadedFile>
-                      <ui:LogMessage DisplayName="Log Message - Download complete" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Finished download wait. Ending report generation sequence.&quot;]" />
+                      <ui:LogMessage DisplayName="Log Message - Download complete" sap:VirtualizedContainerService.HintSize="434,101" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Finished download wait. Ending report generation sequence.&quot;]" />
                     </Sequence>
                   </If.Then>
                   <If.Else>
@@ -295,28 +298,28 @@
                     </Sequence>
                   </If.Else>
                 </If>
-                <If sap2010:Annotation.AnnotationText="Exceeded max refresh amount. Report generation timeout.&#xA;&#xA;Throws an exception to be caught in this states top level try/catch block, which in turn will end the process" Condition="[currentRefreshCount &gt; in_maxRefreshCount]" DisplayName="Check if exceeded max refresh count" sap:VirtualizedContainerService.HintSize="884,507" sap2010:WorkflowViewState.IdRef="If_2">
+                <If sap2010:Annotation.AnnotationText="Exceeded max refresh amount. Report generation timeout.&#xA;&#xA;Throws an exception to be caught in this states top level try/catch block, which in turn will end the process" Condition="[currentRefreshCount &gt; in_maxRefreshCount]" DisplayName="Check if exceeded max refresh count" sap:VirtualizedContainerService.HintSize="952,567" sap2010:WorkflowViewState.IdRef="If_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <Sequence DisplayName="Sequence for exceed check" sap:VirtualizedContainerService.HintSize="376,247" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <Sequence DisplayName="Sequence for exceed check" sap:VirtualizedContainerService.HintSize="400,297" sap2010:WorkflowViewState.IdRef="Sequence_7">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="Log Message - refresh count max reached" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Error" Message="[&quot;Max refresh count has been reached. Ending the process.&quot;]" />
-                      <Throw DisplayName="Throw refresh count exceeded Exception" Exception="[new Exception(&quot;Max refresh count has been reached. The report took too long to generate.&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                      <ui:LogMessage DisplayName="Log Message - refresh count max reached" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Error" Message="[&quot;Max refresh count has been reached. Ending the process.&quot;]" />
+                      <Throw DisplayName="Throw refresh count exceeded Exception" Exception="[new Exception(&quot;Max refresh count has been reached. The report took too long to generate.&quot;)]" sap:VirtualizedContainerService.HintSize="338,32" sap2010:WorkflowViewState.IdRef="Throw_1" />
                     </Sequence>
                   </If.Then>
                 </If>
               </Sequence>
             </TryCatch.Try>
             <TryCatch.Catches>
-              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="970,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1018,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -327,7 +330,7 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Sequence - Report Download Exception" sap:VirtualizedContainerService.HintSize="400,607" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <Sequence DisplayName="Sequence - Report Download Exception" sap:VirtualizedContainerService.HintSize="400,609" sap2010:WorkflowViewState.IdRef="Sequence_9">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -336,7 +339,7 @@
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Take Report Download Exception Screenshot" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <InArgument x:TypeArguments="x:String" x:Key="in_Folder">
-                          <Literal x:TypeArguments="x:String">Exceptions_Screenshots</Literal>
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ExScreenshotsFolderPath" />
                         </InArgument>
                         <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">
                           <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="ScreenshotFilepath" />
