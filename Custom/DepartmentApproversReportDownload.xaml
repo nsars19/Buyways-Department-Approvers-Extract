@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1147,5031</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1147,4959</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DepartmentApproversReportDownload_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -92,7 +92,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DepartmentApproversReportDownload" sap:VirtualizedContainerService.HintSize="1148,4966" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DepartmentApproversReportDownload" sap:VirtualizedContainerService.HintSize="1148,4894" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="reportComplete" />
       <Variable x:TypeArguments="x:Int32" Default="1" Name="currentRefreshCount" />
@@ -125,22 +125,21 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Browser Chrome: Import/Export URL" sap:VirtualizedContainerService.HintSize="1086,4694" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="50d8ec10-3cb7-492d-9e8b-53bed36ff72e" Version="V1" WindowResize="Maximize">
+    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Browser Chrome: Import/Export URL" sap:VirtualizedContainerService.HintSize="1086,4622" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="50d8ec10-3cb7-492d-9e8b-53bed36ff72e" Version="V1" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <TryCatch DisplayName="Try Catch - Report Download Process" sap:VirtualizedContainerService.HintSize="1052,4468" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+          <TryCatch DisplayName="Try Catch - Report Download Process" sap:VirtualizedContainerService.HintSize="1052,4396" sap2010:WorkflowViewState.IdRef="TryCatch_1">
             <TryCatch.Try>
-              <Sequence DisplayName="File Download Wait Sequence" sap:VirtualizedContainerService.HintSize="1014,4231" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <Sequence DisplayName="File Download Wait Sequence" sap:VirtualizedContainerService.HintSize="1014,4159" sap2010:WorkflowViewState.IdRef="Sequence_8">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Throw Exception="[new Exception(&quot;test&quot;)]" sap:VirtualizedContainerService.HintSize="952,32" sap2010:WorkflowViewState.IdRef="Throw_2" />
                 <ui:LogMessage DisplayName="Log Message - loop start" sap:VirtualizedContainerService.HintSize="952,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Beginning loop to check for completed report&quot;]" />
                 <ui:InterruptibleWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Refresh the page every {{refreshInterval}} seconds, and then check the status of the report generation to determine whether to download the file, or refresh the page again" Condition="[reportComplete &lt;&gt; True and currentRefreshCount &lt;= in_maxRefreshCount]" DisplayName="While Report Status is not &quot;Completed&quot;" sap:VirtualizedContainerService.HintSize="952,1096" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
                   <ui:InterruptibleWhile.Body>
